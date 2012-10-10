@@ -18,8 +18,8 @@ Tracked and discussed as [Github Issues](https://github.com/HKCodeCamp/mobay/iss
 
 ## Tech Stack
 
-- RubyOnRails
-- Postgres
+- Ruby On Rails (3.2)
+- Postgres 9.1
 - jQuery
 - jQuery Mobile
 - RubyMotion ( if have time )
