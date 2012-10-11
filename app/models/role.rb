@@ -5,5 +5,9 @@ class Role < ActiveRecord::Base
   def self.admin
     find_or_create_by_name("admin")
   end
+  
+  def self.sms_verified
+    find_or_create_by_name("sms_verified")
+  end
 
 end

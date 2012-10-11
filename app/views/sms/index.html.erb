@@ -1,0 +1,7 @@
+Send sms validation to your mobile number<br/><br/>
+<%= form_tag(sms_send_link_path, :method => "post") do %>
+  <%= label_tag(:mobile_no, "Mobile Number:") %>
+  <%= text_field_tag(:mobile_no) %>
+  <%= submit_tag("Send") %> 
+<% end %>
+(for example : 85212345678)

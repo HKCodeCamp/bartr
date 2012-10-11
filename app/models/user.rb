@@ -25,6 +25,18 @@ class User < ActiveRecord::Base
   def admin?
     role?(:admin)
   end
+  
+  def make_sms_verified
+    self.roles << Role.sms_verified
+  end
+
+  def revoke_sms_verified
+    self.roles.delete(Role.sms_verified)
+  end
+
+  def sms_verified?
+    role?(:sms_verified)
+  end
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token['info']
