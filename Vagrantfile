@@ -3,7 +3,7 @@
 
 Vagrant::Config.run do |config|
   config.vm.box = "rails"
-  config.vm.box_url = "http://dl.dropbox.com/u/164404/box/precise64-ruby-postgresql-9.1.box"
+  config.vm.box_url = "https://dl.dropbox.com/u/164404/box/precise64-ruby-postgresql-9.1.box"
 
   config.vm.network :hostonly, "10.10.10.10"
   config.vm.network :bridged

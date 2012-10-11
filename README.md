@@ -25,9 +25,10 @@ gem install vagrant
 ```
 vagrant up
 ```
-4. SSH into app folder in VM
+4. SSH into VM, and change to app folder
 ```
 vagrant ssh
+cd /vagrant
 ```  
 5. Install project dependencies  
 ```
@@ -37,8 +38,12 @@ bundle install
 ```
 bundle exec foreman start
 ```
+7. Verified if everything setup properly by open browser and enter http://10.10.10.10:5000.  
+It should show the app website.
 
-You can suspend the VM from your host machine via command:  
+If everything worked properly, you can press Ctrl-C to exit foreman.
+
+You may suspend the VM from your host machine via command:  
 ```
 vagrant suspend
 ```
