@@ -35,7 +35,7 @@ vagrant ssh
 1. In the VM, change to app folder:  
 ```
 cd /vagrant
-``
+```
 2. Install project dependencies  
 ```
 bundle install
