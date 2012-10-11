@@ -25,20 +25,26 @@ gem install vagrant
 ```
 vagrant up
 ```
-4. SSH into VM, and change to app folder  
+4. SSH into VM
 ```
-vagrant ssh  
-cd /vagrant  
+vagrant ssh
 ```  
-5. Install project dependencies  
+
+## Setup inside VM
+
+1. In the VM, change to app folder
+```
+cd /vagrant
+``
+2. Install project dependencies  
 ```
 bundle install
 ```
-6. Startup the server:  
+3. Startup the server:  
 ```
 bundle exec foreman start
 ```
-7. Verified if everything setup properly by open browser and enter http://10.10.10.10:5000.  
+4. Verified if everything setup properly by open browser and enter http://10.10.10.10:5000.  
 It should show the app website.
 
 ![](http://f.cl.ly/items/0D1O0v1h0f3J3J3V2Z2F/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202012-10-11%20%E4%B8%8B%E5%8D%8812.14.03.png)
