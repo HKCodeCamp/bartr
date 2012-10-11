@@ -6,7 +6,7 @@ Please make sure you have following software installed before proceed.
 
 - [VirtualBox 4.2.x](https://www.virtualbox.org/wiki/Downloads)
 - ruby (preferbly via [rvm](https://rvm.io/rvm/install/))
-- [vagrant](http://vagrantup.com/v1/docs/getting-started/index.html)
+- [vagrant](http://vagrantup.com/v1/docs/getting-started/index.html)  
 ```
 gem install vagrant
 ```
@@ -40,6 +40,8 @@ bundle exec foreman start
 ```
 7. Verified if everything setup properly by open browser and enter http://10.10.10.10:5000.  
 It should show the app website.
+
+![](http://f.cl.ly/items/0D1O0v1h0f3J3J3V2Z2F/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202012-10-11%20%E4%B8%8B%E5%8D%8812.14.03.png)
 
 If everything worked properly, you can press Ctrl-C to exit foreman.
 
