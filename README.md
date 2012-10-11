@@ -40,10 +40,21 @@ cd /vagrant
 ```
 bundle install
 ```
+3. Create Database (work around)
+```
+sudo su postgres  
+
+createdb bartr_test  
+createdb bartr_development  
+
+(Ctrl-d)
+
+```
 3. Startup the server:  
 ```
 bundle exec foreman start
 ```
+
 
 
 Verified if everything setup properly by open browser (on your host machine) and enter http://10.10.10.10:5000.  
