@@ -1,9 +1,11 @@
 # Mockups
 
-## Find Nearby Items (List View)
+## Find Nearby Items
 
-![https://github.com/HKCodeCamp/bartr/raw/master/docs/nearby1.png]()
+### Map View
 
-## Find Nearby Items (Map View)
+![List View](https://github.com/HKCodeCamp/bartr/raw/master/docs/nearby1.png)
 
-![https://github.com/HKCodeCamp/bartr/raw/master/docs/nearby2.png]()
+### List View
+
+![Map View](https://github.com/HKCodeCamp/bartr/raw/master/docs/nearby2.png)
