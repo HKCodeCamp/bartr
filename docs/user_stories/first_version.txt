@@ -38,6 +38,17 @@ Feature: Interaction Between Buyer and Seller
     When I press submit
     Then the comment should be added to system
 
+Feature: Authentication
+  As a Buyer or Seller
+  In order to interact with others
+  I want to login via Facebook
+
+  Scenario: Login Facebook
+    Given I have an Facebook account
+    When I Click Facebook Connect
+    And I authorize Bartr access to my account
+    Then Bartr create or login my user account from my Facebook data
+
 Feature: Submit Interest
   As a Buyer
   In order to complete a transaction
