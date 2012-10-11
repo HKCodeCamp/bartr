@@ -7,10 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div data-role="page">
+  
 	<%= render "layouts/application/header" %>
 
-    <div class="container">
+    <div data-role="content">
 
       <%= render "layouts/application/flash_messages" %>
 
@@ -18,6 +19,7 @@
 
     </div>
 
-
+	 <%= render "layouts/application/footer" %>	 
+</div>
 </body>
 </html>

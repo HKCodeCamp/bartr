@@ -9,7 +9,7 @@ Vagrant::Config.run do |config|
   config.vm.network :bridged
 
   config.vm.forward_port 5000, 5000
-  config.vm.forward_port 5432, 5432
+  config.vm.forward_port 5432, 5431
 
   config.vm.provision :shell, :inline => "sudo update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8"
 

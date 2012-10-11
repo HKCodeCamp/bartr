@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 gem 'pg'
 gem 'jquery-rails'
+gem 'jquery_mobile_rails'
 
 # web server
 gem 'puma'

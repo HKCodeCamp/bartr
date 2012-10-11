@@ -1,18 +1,12 @@
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
+<div data-role="header" data-position="fixed">
+ <h1>Bartr</h1>
+ <a href="#settingsPopup" data-rel="popup" data-mini="true" data-icon="gear" class="ui-btn-right" data-transition="fade">Settings</a>
+</div>
+<div data-role="popup" id="settingsPopup" class="" data-theme="a" data-overlay-theme="a">
+  <ul data-role="listview" data-inset="true" data-theme="a">
 
-      
-
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-
-      <div class="nav-collapse">
-        <ul class="nav pull-right">
-          <% if user_signed_in? %>
+  <% if user_signed_in? %>
+       <li data-role="divider" data-theme="b"><%= current_user.email %></li>
             <% if current_user.admin? %>
               <li><%= link_to "Admin", admin_path %></li>
             <% end %>
@@ -23,9 +17,6 @@
             <li><%= link_to "Sign in", new_user_session_path %></li>
             <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
           <% end -%>
-        </ul>
-      </div>
-
-    </div>
-  </div>
+  </ul>
 </div>
+
