@@ -25,7 +25,7 @@ gem install vagrant
 ```
 vagrant up
 ```
-4. SSH into VM, and change to app folder
+4. SSH into VM, and change to app folder  
 ```
 vagrant ssh  
 cd /vagrant  
