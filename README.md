@@ -32,7 +32,7 @@ vagrant ssh
 
 ## Setup inside VM
 
-1. In the VM, change to app folder
+1. In the VM, change to app folder:  
 ```
 cd /vagrant
 ``
