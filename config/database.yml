@@ -4,6 +4,7 @@ development:
   database: bartr_development
   username: postgres
   password: postgres
+  host: localhost
 
 test:
   adapter: postgresql
@@ -11,6 +12,7 @@ test:
   database: bartr_test
   username: postgres
   password: postgres
+  host: localhost
 
 # overriden by heroku automatically
 production:
@@ -19,3 +21,4 @@ production:
   database: bartr_production
   username: postgres
   password: postgres
+  host: localhost
