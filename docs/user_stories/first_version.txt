@@ -41,13 +41,19 @@ Feature: Interaction Between Buyer and Seller
 Feature: Authentication
   As a Buyer or Seller
   In order to interact with others
-  I want to login via Facebook
+  I want to login to Bartr
 
-  Scenario: Login Facebook
-    Given I have an Facebook account
-    When I Click Facebook Connect
-    And I authorize Bartr access to my account
-    Then Bartr create or login my user account from my Facebook data
+  Scenario: Sign Up
+    Given I have no Bartr account
+    And I enter username, email, password and password confirmation
+    When I click Sign Up
+    Then Bartr create my account
+
+  Scenario: Sign In
+    Given I have an Bartr account
+    And I enter email and password
+    When I click Sign In
+    Then Bartr login my account
 
 Feature: Submit Interest
   As a Buyer
