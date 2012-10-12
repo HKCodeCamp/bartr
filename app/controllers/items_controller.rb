@@ -2,6 +2,9 @@ class ItemsController < ApplicationController
   before_filter :require_user, :only => [:create, :new, :destroy]
 
   def nearby
+    # TODO remember to remove this
+    headers['Access-Control-Allow-Origin'] = "*"
+
     @items = Item.find(:all)
 
     respond_to do |format|
@@ -54,6 +57,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    @item = Item.find(params[:id])
+
     respond_to do |format|
       format.html { redirect_to items_url }
       format.json { render json: {:status => :ok} }
