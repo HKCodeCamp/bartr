@@ -5,12 +5,15 @@ Bartr::Application.routes.draw do
 
   post "sms/verify"
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   mount Attachinary::Engine => "/attachinary"
   
-  root :to => "pages#index"
-  
-  
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  root :to => "items#nearby"
+
+  resources :users do
+    post :follow, :un_follow, on: :member
+  end
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

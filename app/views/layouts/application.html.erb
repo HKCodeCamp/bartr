@@ -9,20 +9,19 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 <body>
-<div data-role="page" class="item-list-page">
+<div data-role="page">
   
 	<%= render "layouts/application/header" %>
 
     <div data-role="content">
-
-      <%= render "layouts/application/flash_messages" %>
-		<div class="item-list">
-		</div>
-      <%= yield %>
-
-    </div>
+     <%= render "layouts/application/flash_messages" %>
+     <%= yield %>
+   </div>
 
 	 <%= render "layouts/application/footer" %>	 
 </div>
+
+<%= yield :footer %>
+
 </body>
 </html>

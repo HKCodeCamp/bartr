@@ -1,0 +1,7 @@
+<%= simple_form_for(@user) do |f| %>
+  <%= f.input :email %>
+  <%= f.input :name  %>
+  <%= f.input :desc, :as => :text %>
+  <%= f.button :submit %>
+  <%= link_to "Cancel", user_path(@user) %>
+<% end %>

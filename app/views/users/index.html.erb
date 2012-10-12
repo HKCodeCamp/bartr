@@ -1,0 +1,8 @@
+<h2>Active Sellers</h2>
+<% if @users.any? %>
+  <% @users.each do |user| %>
+    <p><%= link_to user.email, user_path(user) %></p>
+  <% end %>
+<% else %>
+  <p>There are no sellers at the moment</p>
+<% end %>
