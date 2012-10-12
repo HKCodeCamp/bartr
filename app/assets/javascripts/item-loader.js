@@ -23,7 +23,7 @@ function itemLoad(item_cb, done_cb) {
 
 function itemRender(i, d) {
 
-  var e = $('<li class="item" />').attr('id', 'item-'+d.id);
+  var e = $('<div class="item" />').attr('id', 'item-'+d.id);
   e.click(function(e){
 	 $.mobile.changePage('/items/' + d.id, { transition: 'slide' });
   });
@@ -34,13 +34,13 @@ function itemRender(i, d) {
 	 image.attr('data-original', d.image_url);
   }
 
-  e.append($('<div class="thumbnail"></div>').html(image));
+  e.append(image);
   
-  var details = $('<div class="details"></div>');
-  details.append('<p class="title"></p>').html(d.title);
-  details.append('<p class="desc"></p>').append("<span class='price'>" + d.price + "</p>").append('<p>' + d.desc + '</p>');
-  
-  e.append(details);
+//  var details = $('<div class="details"></div>');
+//  details.append('<p class="title"></p>').html(d.title);
+//  details.append('<p class="desc"></p>').append("<span class='price'>" + d.price + "</p>").append('<p>' + d.desc + '</p>');
+//  
+//  e.append(details);
 
   return e;
 }
@@ -49,7 +49,7 @@ $('.item-list-page').live('pageshow', function(e){
   console.log(e.target);
   var e = $(e.target).find('.item-list');
 
-  var cont = $('<ul></ul>');  
+  var cont = $('<div class="item-container"></div>');  
   itemLoad(
 	 function(i, item){
 		cont.append(itemRender(i,item));

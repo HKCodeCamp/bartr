@@ -1,15 +1,15 @@
-.item-list ul {
-}
-.item-list li {
-/*	 float: left;
-	 width: 33%;
-	 height:20%;*/
-	 list-style-type:none;
+.item-list div.item {
+	 float: left;
+	 width: 32%;
+	 padding:0.5%;
+	 padding-bottom:none;
 }
 
-.item-list img {
-	 width:80px;
-	 height:80px;
+.item-list div.item img {
+	 width:100%;
+	 height:auto;
+	 border-radius:2em;
+	 border: 1px solid #ccc;
 }
 
 .item .thumbnail { display:inline-block; }
