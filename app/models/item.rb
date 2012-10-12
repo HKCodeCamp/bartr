@@ -6,7 +6,7 @@ class Item < ActiveRecord::Base
 
   validates :title, :length => { :minimum => 2, :maximum => 50 }
   validates :desc, :length => { :minimum => 5, :maximum => 3000 }
-  validates :price, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1.0 }
+  validates :price, :numericality => { :only_integer => true, :greater_than_or_equal_to => 0.0 }
   validates :owner, :presence => true
 
   def to_s
