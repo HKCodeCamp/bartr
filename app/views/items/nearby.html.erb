@@ -1,7 +1,7 @@
 <h1>Nearby Items</h1>
-
+<ul data-role="listview" data-iscroll>
 <% @items.each do |item| %>
   <%= render :partial => "result_item", :locals => { :item => item } %>
 <% end %>
-
+</ul>
 <%= render :partial => "dynamic_pages" %>
