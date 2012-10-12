@@ -7,16 +7,28 @@ $(document).on("pageinit", function(){
               
       var mapOptions = {
               center: myLatlng,
-              zoom: 5,
+              zoom: 16,
               mapTypeId: google.maps.MapTypeId.ROADMAP
             };
       console.log(mapOptions)
       var map = new google.maps.Map($("#map-canvas")[0], mapOptions);
-      var marker = new google.maps.Marker({
+      var myMarker = new google.maps.Marker({
             position: myLatlng,
             map: map,
             title: 'You are here!'
         });
+
+      itemLoad(function(i, item){
+        if(!item){ console.log("item fail");return true; }
+        var pos =   new google.maps.LatLng (item.latitude, item.longitude);
+        if(!pos){ console.log("pos failed"); return true; }
+        console.log(pos);
+        var marker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            title: item.title
+        });
+      }, function(){}) 
     }
     if(currentGeoLocation){
       console.log("We already on position")
