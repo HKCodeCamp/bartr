@@ -15,9 +15,10 @@ class User < ActiveRecord::Base
   has_many :followings, :class_name => "Follower", :foreign_key => "following_id", :dependent => :destroy
   has_many :followers, :foreign_key => "followed_by_id", :dependent => :destroy
   has_many :followed_bies, :through => :followings
+  has_many :items, :foreign_key => 'owner_id'
 
   scope :active_sellers, scoped
-  
+
   def role?(role)
     return !!self.roles.find_by_name(role.to_s)
   end
