@@ -18,8 +18,6 @@ gem 'geocoder'
 
 gem "twilio-ruby"
 
-gem ""
-
 # web server
 gem 'puma'
 
