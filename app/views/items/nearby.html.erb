@@ -4,4 +4,6 @@
   <%= render :partial => "result_item", :locals => { :item => item } %>
 <% end %>
 
-<%= render :partial => "dynamic_pages" %>
+<% content_for :footer do %>
+  <%= render :partial => "dynamic_pages" %>
+<% end %>
