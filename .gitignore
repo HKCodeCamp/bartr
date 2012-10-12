@@ -7,7 +7,8 @@
 # Ignore bundler config
 /.bundle
 
-/.DS_Store
+# Ignore System File
+.DS_Store
 
 # Ignore config file
 /config/application.yml
