@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   include User::SmsVerifiable
   include User::Adminable
   
-  devise :database_authenticatable, :registerable,
+  devise :confirmable, :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :validatable
 
   devise :omniauthable
