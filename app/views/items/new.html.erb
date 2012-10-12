@@ -4,5 +4,6 @@
   <%= f.input :title, :label => 'Name of the item' %>
   <%= f.input :price, :placeholder => '$10', :type => "number"  %>
   <%= f.input :desc, :as => :text %>
+  <%= f.attachinary_file_field :photos %>
   <%= f.button :submit %>
 <% end %>

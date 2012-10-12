@@ -19,7 +19,8 @@ gem "twilio-ruby"
 # web server
 gem 'puma'
 
-# Attachinary - Photo upload 
+# Cloudinary & Attachinary - Photo upload 
+gem 'cloudinary'
 gem 'attachinary'
 
 

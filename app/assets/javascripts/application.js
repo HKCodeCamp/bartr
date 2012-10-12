@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require jquery.mobile
 //= require_tree .
+//= require attachinary
+
+jQuery(function() {
+
+  $('.attachinary-input').attachinary();
+
+})
