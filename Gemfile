@@ -16,12 +16,15 @@ gem "omniauth-facebook"
 
 gem "twilio-ruby"
 
+gem ""
+
 # web server
 gem 'puma'
 
 # Attachinary - Photo upload 
 gem 'attachinary'
 
+# backgrounding
 
 gem 'delayed_job'
 gem 'delayed_job_active_record'
