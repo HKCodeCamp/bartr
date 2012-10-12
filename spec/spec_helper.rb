@@ -25,6 +25,7 @@ RSpec.configure do |config|
 
   # Factory Girl
   config.include FactoryGirl::Syntax::Methods
+  FactoryGirl.find_definitions
 
   # Default rspec settings
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

@@ -16,16 +16,22 @@ class User
     #
     # NOTE: Setup keys in config/application.yml
     # TODO use resque or delayed job
-    def send_sms
+    def send_verification_sms
+      # TODO generate a verification code!
+      # self.verification_code = '1234'
+
+      User.twilio_client.account.sms.messages.create(
+        :from => '+13155674679',
+        :to =>   "+#{self.mobile_no}",
+        :body => "Activation code is 1234!"
+      )
+    end
+
+    # return a twilio client
+    def self.twilio_client
       key     = Settings.twilio.key
       token   = Settings.twilio.token
-      @client = Twilio::REST::Client.new key, token
-
-      @client.account.sms.messages.create(
-        :from => '+13155674679',
-        :to => '+'+params[:mobile_no],
-        :body => 'Activation code is xyz!'
-      )
+      Twilio::REST::Client.new key, token
     end
   end
 end

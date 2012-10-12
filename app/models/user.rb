@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  attr_accessible :mobile_no
   include User::SmsVerifiable
   include User::Adminable
   
