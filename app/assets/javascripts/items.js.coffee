@@ -1,3 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$('[data-role="page"]').live 'pageshow', (e) ->
+  $('#new_item').submit ->
+    if currentGeoLocation && currentGeoLocation.coords
+      $('#item_latitude').val(currentGeoLocation.coords.latitude)
+      $('#item_longitude').val(currentGeoLocation.coords.longitude)
+      console.log("location: ", currentGeoLocation.coords.latitude, currentGeoLocation.coords.longitude)
+    else
+      console.log("no user location")
+    return true;
