@@ -18,6 +18,13 @@ gem "twilio-ruby"
 # web server
 gem 'puma'
 
+# Attachinary - Photo upload 
+gem 'attachinary'
+
+
+gem 'delayed_job'
+gem 'delayed_job_active_record'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
