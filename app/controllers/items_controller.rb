@@ -34,7 +34,6 @@ class ItemsController < ApplicationController
         format.html { redirect_to @item, notice: "Item created" }
         format.json { render json: @item, :status => :unprocessable_entity }
       end
-      
     else
       respond_to do |format|
         format.html { render action: "new" }
