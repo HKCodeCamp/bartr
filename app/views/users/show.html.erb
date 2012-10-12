@@ -5,7 +5,7 @@
   <p class="followers_count">Followers: <%= @user.followers_count %></p>
   <div class="userItems">
     <% @user.items.each do |item| %>
-      <%= item.to_s %>
+      <%= render "result_item", :item => item %>
     <% end %>
   </div>
 
