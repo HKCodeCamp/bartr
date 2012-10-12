@@ -50,7 +50,9 @@ createdb bartr_development
 (Ctrl-d)
 
 ```
-3. Startup the server:  
+4. Setup App Setting  
+- Copy config/application.default.yml to config/application.yml and fill in proper keys
+5. Startup the server:  
 ```
 bundle exec foreman start
 ```
