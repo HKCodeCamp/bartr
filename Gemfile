@@ -14,6 +14,8 @@ gem 'state_machine'
 gem "devise"
 gem "omniauth-facebook"
 
+gem 'geocoder'
+
 gem "twilio-ruby"
 
 gem ""

@@ -2,6 +2,9 @@ class Item < ActiveRecord::Base
   attr_accessible :title, :desc, :price
   attr_accessible :category, :deleted_at, :owner_id, :status, :tag
 
+  attr_accessible :address, :latitude, :longitude
+  reverse_geocoded_by :latitude, :longitude
+
   belongs_to :owner, :class_name => 'User'
 
   validates :title, :length => { :minimum => 2, :maximum => 50 }
