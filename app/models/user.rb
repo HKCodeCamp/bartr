@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include User::SmsVerifiable
+  include User::Adminable
   
   devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :validatable
@@ -12,30 +14,6 @@ class User < ActiveRecord::Base
   
   def role?(role)
     return !!self.roles.find_by_name(role.to_s)
-  end
-
-  def make_admin
-    self.roles << Role.admin
-  end
-
-  def revoke_admin
-    self.roles.delete(Role.admin)
-  end
-
-  def admin?
-    role?(:admin)
-  end
-  
-  def make_sms_verified
-    self.roles << Role.sms_verified
-  end
-
-  def revoke_sms_verified
-    self.roles.delete(Role.sms_verified)
-  end
-
-  def sms_verified?
-    role?(:sms_verified)
   end
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
