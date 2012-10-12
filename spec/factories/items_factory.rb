@@ -4,5 +4,6 @@ FactoryGirl.define do
     title "West Magazine #123"
     desc "West Magazine #123 today issue!!"
     price 10
+
   end
 end

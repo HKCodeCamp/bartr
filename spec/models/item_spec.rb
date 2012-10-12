@@ -3,6 +3,9 @@ require 'spec_helper'
 describe Item do
   describe "item validation" do
     let(:item) { FactoryGirl.build(:item)}
+    before do
+      item.owner = FactoryGirl.create :user
+    end
     it "price validation" do 
       item.valid?.should be_true
 
@@ -35,6 +38,13 @@ describe Item do
       item.valid?.should be_true
 
       item.desc = "H"
+      item.valid?.should be_false
+    end
+
+    it "owner validation" do 
+      item.valid?.should be_true
+
+      item.owner = nil
       item.valid?.should be_false
     end
   end

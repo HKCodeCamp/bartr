@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121012142023) do
+ActiveRecord::Schema.define(:version => 20121012160059) do
 
   create_table "attachinary_files", :force => true do |t|
     t.integer  "attachinariable_id"
@@ -50,6 +50,9 @@ ActiveRecord::Schema.define(:version => 20121012142023) do
     t.integer  "owner_id"
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
+    t.text     "address"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "roles", :force => true do |t|

@@ -14,6 +14,8 @@ gem 'state_machine'
 gem "devise"
 gem "omniauth-facebook"
 
+gem 'geocoder'
+
 gem "twilio-ruby"
 
 # web server
@@ -24,6 +26,7 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'attachinary'
 
+# backgrounding
 
 gem 'delayed_job'
 gem 'delayed_job_active_record'
