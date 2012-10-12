@@ -1,13 +1,4 @@
 Bartr::Application.routes.draw do
-  
-  get "items/new"
-
-  get "items/create"
-
-  get "items/destroy"
-
-  get "items/nearby"
-
   get "sms/index"
 
   post "sms/send_link"
@@ -29,7 +20,11 @@ Bartr::Application.routes.draw do
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
-  resources :items
+  resources :items do
+    collection do
+      get 'nearby'
+    end
+  end
 
   # Sample resource route with options:
   #   resources :products do

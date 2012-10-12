@@ -7,6 +7,7 @@ gem 'jquery_mobile_rails'
 
 # for configuration
 gem 'settingslogic'
+gem 'simple_form'
 
 gem 'state_machine'
 
@@ -38,6 +39,7 @@ end
 group :development do
   gem 'vagrant', '~> 1.0.5'
   gem 'foreman'
+  gem 'pry'
 end
 
 group :test do

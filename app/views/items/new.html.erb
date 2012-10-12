@@ -1,14 +1,8 @@
 <h1>Sell an Item</h1>
 
-<%= form_for(:item, :url => new_item_path) do |f| %>
-  <div><%= f.label :title %><br />
-  <%= f.text_field :title %></div>
-
-  <div><%= f.label :price %><br />
-  <%= f.text_field :price, :type => "number" %></div>
-
-  <div><%= f.label :desc %><br />
-  <%= f.text_area :desc %></div>
-
-  <div><%= f.submit "Submit" %></div>
+<%= simple_form_for(@item) do |f| %>
+  <%= f.input :title, :label => 'Name of the item' %>
+  <%= f.input :price, :placeholder => '$10', :type => "number"  %>
+  <%= f.input :desc, :as => :text %>
+  <%= f.button :submit %>
 <% end %>
