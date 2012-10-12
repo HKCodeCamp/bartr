@@ -2,7 +2,7 @@
 
 <%= simple_form_for(@item) do |f| %>
   <%= f.input :title, :label => 'Name of the item' %>
-  <%= f.input :price, :label => 'Price (HKD)', :placeholder => '10', :type => "number"  %>
+  <%= f.input :price, :label => 'Price (HKD)', :type => "number"  %>
   <%= f.input :desc, :as => :text %>
   <%= f.button :submit %>
 <% end %>
