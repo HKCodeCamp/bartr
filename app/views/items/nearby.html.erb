@@ -1,5 +1,7 @@
 <h1>Nearby Items</h1>
-<% @items.each do |item| %>
 
+<% @items.each do |item| %>
+  <%= render :partial => "result_item", :locals => { :item => item } %>
 <% end %>
-<%= render "dynamic_pages" %>
+
+<%= render :partial => "dynamic_pages" %>

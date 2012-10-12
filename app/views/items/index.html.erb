@@ -1,5 +1,5 @@
 <div class="items">
 <% @items.each do |item| %>
-
+  <%= render :partial => "result_item", :locals => { :item => item } %>
 <% end %>
 </div>
