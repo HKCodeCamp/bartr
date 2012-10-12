@@ -1,22 +1,9 @@
-$('.item-list-page').live('pageshow', function(e){
-  console.log(e.target);
-  var e = $(e.target).find('.item-list');
-  itemLoad(e, function(){
-	 e.find('img.lazy').lazyload();
-	 e.scrollview();
-  });
-});
-
-
-
-
-
-function itemLoad(elm, cb) {
+function itemLoad(item_cb, done_cb) {
   if (!currentGeoLocation) {
 	 // Queue load until position fix is achieved
 	 $(window).on('positionUpdate', function(e){
 		console.log('deferred itemLoad');
-		itemLoad(elm, cb);
+		itemLoad(item_cb, done_cb);
 	 });
 	 return true;
   }
@@ -27,27 +14,25 @@ function itemLoad(elm, cb) {
 	 start: 1,
 	 count: 50
   }, function(d) {
-	 var cont = $('<ul data-role="listview" data-iscroll></ul>');
 	 $.each(d, function(i, item) {
-		cont.append(itemRender(item));
+		item_cb(i,item);
 	 });
-	 elm.html(cont);
-	 cb();
+	 done_cb();
   });
 }
 
-function itemRender(d) {
+function itemRender(i, d) {
 
   var e = $('<li class="item" />').attr('id', 'item-'+d.id);
   e.click(function(e){
 	 $.mobile.changePage('/items/' + d.id, { transition: 'slide' });
   });
   
-  var image = $('<img src="/assets/placeholder-1x1.png" class="lazy">').attr('data-original', 'http://placekitten.com/80/80');
+  var image = $('<img src="/assets/placeholder-1x1.png" class="lazy">').attr('data-original', 'http://placekitten.com/300/300');
   
-//  if (d.image_url) {
-//	 image.attr('data-original', d.image_url);
-//  }
+  if (d.image_url) {
+	 image.attr('data-original', d.image_url);
+  }
 
   e.append($('<div class="thumbnail"></div>').html(image));
   
@@ -59,3 +44,17 @@ function itemRender(d) {
 
   return e;
 }
+
+$('.item-list-page').live('pageshow', function(e){
+  console.log(e.target);
+  var e = $(e.target).find('.item-list');
+
+  var cont = $('<ul></ul>');  
+  itemLoad(function(){
+				 cont.append(itemRender)
+			  }, 
+			  function(){
+				 e.html(cont);
+				 e.find('img.lazy').lazyload();
+			  });
+});
