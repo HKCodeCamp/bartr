@@ -25,3 +25,4 @@
 
 # Ignore extracted file
 /public/proto/lib/*/
+!/public/proto/lib/*.zip
