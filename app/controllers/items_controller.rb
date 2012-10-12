@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
       coord = [params["lat"].to_f, params["lon"].to_f]
       distance = params["distance"].to_f if params["distance"]
       distance = 50.0 if distance == nil || distance > 1000 # proper limitation here
-      @items = Item.near(coord, distance)
+      @items = Item.near(coord, distance, :units => :km)
     else
       puts "no location available"
       @items = Item.find(:all)  
