@@ -67,6 +67,8 @@ createdb bartr_development
 
   - Copy config/application.default.yml to config/application.yml and fill in proper keys
 
+  - (For Production ENV) heroku config: https://devcenter.heroku.com/articles/config-vars
+
 - Startup the server:  
 
 ```
