@@ -1,12 +1,12 @@
 function itemLoad(item_cb, done_cb) {
   if (!currentGeoLocation) {
 	 // Queue load until position fix is achieved
-	 $(window).on('positionUpdate', function(e){
-		console.log('deferred itemLoad');
+	 setTimeout(function(){
 		itemLoad(item_cb, done_cb);
-	 });
+	 },300);
 	 return true;
   }
+
   $.getJSON('/items/nearby.json', {
 	 lon: currentGeoLocation.coords.longitude,
 	 lat: currentGeoLocation.coords.latitude,
@@ -15,7 +15,7 @@ function itemLoad(item_cb, done_cb) {
 	 count: 50
   }, function(d) {
 	 $.each(d, function(i, item) {
-		item_cb(i,item);
+		item_cb(i, item);
 	 });
 	 done_cb();
   });
@@ -50,11 +50,12 @@ $('.item-list-page').live('pageshow', function(e){
   var e = $(e.target).find('.item-list');
 
   var cont = $('<ul></ul>');  
-  itemLoad(function(){
-				 cont.append(itemRender)
-			  }, 
-			  function(){
-				 e.html(cont);
-				 e.find('img.lazy').lazyload();
-			  });
+  itemLoad(
+	 function(i, item){
+		cont.append(itemRender(i,item));
+	 }, 
+	 function(){
+		e.html(cont);
+		e.find('img.lazy').lazyload();
+	 });
 });
