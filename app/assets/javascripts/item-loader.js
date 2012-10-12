@@ -1,12 +1,12 @@
 function itemLoad(item_cb, done_cb) {
   if (!currentGeoLocation) {
 	 // Queue load until position fix is achieved
-	 $(window).on('positionUpdate', function(e){
-		console.log('deferred itemLoad');
+	 setTimeout(function(){
 		itemLoad(item_cb, done_cb);
-	 });
+	 },300);
 	 return true;
   }
+
   $.getJSON('/items/nearby.json', {
 	 lon: currentGeoLocation.coords.longitude,
 	 lat: currentGeoLocation.coords.latitude,

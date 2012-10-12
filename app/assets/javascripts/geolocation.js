@@ -9,3 +9,4 @@ var currentGeoLocation = false;
 $(window).on('positionUpdate', function(e, pos) {
   currentGeoLocation = pos;
 });
+
