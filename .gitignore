@@ -9,6 +9,9 @@
 
 /.DS_Store
 
+# Ignore config file
+/config/application.yml
+
 # Ignore VM file
 /.vagrant
 

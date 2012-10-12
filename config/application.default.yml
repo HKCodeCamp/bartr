@@ -1,0 +1,17 @@
+# config/application.yml
+defaults: &defaults
+  twilio:
+    key: "enter key here"
+    token: "enter token here"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  twilio:
+    key: <%= ENV['TWILIO_KEY'] %>
+    token: <%= ENV['TWILIO_TOKEN'] %>
