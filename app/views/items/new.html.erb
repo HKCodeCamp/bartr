@@ -4,7 +4,10 @@
   <%= f.input :title, :label => 'Name of the item' %>
   <%= f.input :price, :label => 'Price (HKD)', :type => "number"  %>
   <%= f.input :desc, :as => :text %>
+
   <%= f.input :latitude, :as => :hidden %>
   <%= f.input :longitude, :as => :hidden %>
+  <%= f.attachinary_file_field :photos %>
+
   <%= f.button :submit %>
 <% end %>

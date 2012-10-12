@@ -21,7 +21,9 @@ gem "twilio-ruby"
 # web server
 gem 'puma'
 
-# Attachinary - Photo upload 
+# Cloudinary & Attachinary - Photo upload 
+gem 'carrierwave'
+gem 'cloudinary'
 gem 'attachinary'
 
 # backgrounding

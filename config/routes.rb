@@ -5,6 +5,8 @@ Bartr::Application.routes.draw do
 
   post "sms/verify"
 
+  mount Attachinary::Engine => "/attachinary"
+  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root :to => "items#nearby"

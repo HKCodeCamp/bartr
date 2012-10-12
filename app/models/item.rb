@@ -12,6 +12,8 @@ class Item < ActiveRecord::Base
   validates :price, :numericality => { :only_integer => true, :greater_than_or_equal_to => 0.0 }
   validates :owner, :presence => true
 
+  has_attachments :photos, maximum: 10
+
   def to_s
     "<Item title=#{title}, price=#{price % ["%.0f"]}>"
   end
