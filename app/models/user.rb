@@ -12,8 +12,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :deleted_at, :desc, :name, :status, :tag
 
   has_and_belongs_to_many :roles
-  has_many :followings, :foreign_key => "following_id", :dependent => :destroy
-  has_many :followers, :through => :followings
+  has_many :followings, :class_name => "Follower", :foreign_key => "following_id", :dependent => :destroy
+  has_many :followers, :foreign_key => "followed_by_id", :dependent => :destroy
+  has_many :followed_bies, :through => :followings
 
   scope :active_sellers, scoped
   
@@ -31,7 +32,7 @@ class User < ActiveRecord::Base
   end
 
   def is_following?(user)
-    followers.include? user
+    user.followed_bies.include? self
   end
 
 end

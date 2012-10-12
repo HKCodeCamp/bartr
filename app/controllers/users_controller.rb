@@ -1,15 +1,20 @@
 class UsersController < ApplicationController
+  respond_to :json, :html
+
   before_filter :find_user,                 except: [:index]
-  before_filter :authenticate_current_user, only: [:edit, :update, :follow, :un_follow]
+  before_filter :authenticate_current_user, only: [:edit, :update]
 
   def index
     @users = User.active_sellers
+    respond_with(@users)
   end
 
   def show
+    respond_with(@user)
   end
 
   def edit
+    respond_with(@user)
   end
 
   def update
@@ -21,16 +26,20 @@ class UsersController < ApplicationController
   end
 
   def follow
-    following = @user.followings.build(:follower_id => current_user.id)
-    if following.save
-      render :action => :show
+    f = @user.followings.build(:followed_by_id => current_user.id)
+    if  f.save
+      redirect_to :action => :show
     else
       render404
     end
   end
 
   def un_follow
-
+    if (f = @user.followings.find_by_followed_by_id(current_user.id)) && f.destroy
+      redirect_to :action => :show
+    else
+      render404
+    end
   end
 
 private

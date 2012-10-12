@@ -13,15 +13,15 @@
 
 ActiveRecord::Schema.define(:version => 20121012131838) do
 
-  create_table "followings", :force => true do |t|
-    t.integer  "follower_id"
+  create_table "followers", :force => true do |t|
+    t.integer  "followed_by_id"
     t.integer  "following_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
-  add_index "followings", ["follower_id"], :name => "index_followings_on_follower_id"
-  add_index "followings", ["following_id"], :name => "index_followings_on_following_id"
+  add_index "followers", ["followed_by_id"], :name => "index_followers_on_followed_by_id"
+  add_index "followers", ["following_id"], :name => "index_followers_on_following_id"
 
   create_table "items", :force => true do |t|
     t.string   "title"
