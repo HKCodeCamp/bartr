@@ -1,0 +1,8 @@
+<h1>Verification code sent!</h1>
+<p>Please input the verification key you received</p>
+
+<%= form_tag(sms_verify_path, :method => "post") do %>
+  <%= label_tag(:pin, "Verify Pin:") %>
+  <%= text_field_tag(:pin) %>
+  <%= submit_tag("Send") %> 
+<% end %>

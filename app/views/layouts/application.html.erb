@@ -5,10 +5,22 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 <body>
+<div data-role="page">
+  
+	<%= render "layouts/application/header" %>
 
-<%= yield %>
+    <div data-role="content">
 
+      <%= render "layouts/application/flash_messages" %>
+
+      <%= yield %>
+
+    </div>
+
+	 <%= render "layouts/application/footer" %>	 
+</div>
 </body>
 </html>

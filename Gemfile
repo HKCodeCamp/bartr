@@ -3,9 +3,17 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 gem 'pg'
 gem 'jquery-rails'
+gem 'jquery_mobile_rails'
 
 # web server
 gem 'puma'
+
+gem 'state_machine'
+
+gem "devise"
+gem "omniauth-facebook"
+
+gem "twilio-ruby"
 
 # Gems used only for assets and not required
 # in production environments by default.
