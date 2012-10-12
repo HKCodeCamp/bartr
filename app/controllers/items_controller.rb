@@ -29,7 +29,8 @@ class ItemsController < ApplicationController
 
   # POST /items/create
   def create
-    @item = Item.create(params[:item])
+    @item = Item.new(params[:item])
+    @item.price = BigDecimal.new(params[:item][:price].gsub("$", "")) if params[:item][:price] && params[:item][:price] =~ /^$/
     @item.owner_id = current_user.id
 
     if @item.save
