@@ -3,3 +3,11 @@
 
 en:
   hello: "Hello world"
+
+  activerecord:
+    attributes:
+
+      user:
+        desc: Description
+        name: Name
+        email: Email
