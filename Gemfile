@@ -29,3 +29,9 @@ group :development do
   gem 'vagrant', '~> 1.0.5'
   gem 'foreman'
 end
+
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'database_cleaner'
+end
