@@ -4,9 +4,9 @@ default: &default
   cdn_subdomain: true
   secure_distribution: false
   private_cdn: false
-  cloud_name: <%= ENV['CLOUDINARY_CLOUD_NAME'] %> 
-  api_key: <%= ENV['CLOUDINARY_API_KEY'] %> 
-  api_secret: <%= ENV['CLOUDINARY_API_SECRET'] %>
+  cloud_name: hvwz5zxen
+  api_key: 586237135489724
+  api_secret: jXG7Z_nFcrrXQveRy1vcR9JiIGI
 
 development:
   <<: *default

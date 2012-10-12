@@ -20,6 +20,7 @@ gem "twilio-ruby"
 gem 'puma'
 
 # Cloudinary & Attachinary - Photo upload 
+gem 'carrierwave'
 gem 'cloudinary'
 gem 'attachinary'
 

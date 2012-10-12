@@ -13,11 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.mobile
-//= require_tree .
+//= require cloudinary
 //= require attachinary
+//=
+//= require_tree .
 
-jQuery(function() {
 
-  $('.attachinary-input').attachinary();
 
-})
+
+$(document).on('pageinit', function(){
+   $('.attachinary-input').attachinary();
+}); 
