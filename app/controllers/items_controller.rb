@@ -153,7 +153,7 @@ class ItemsController < ApplicationController
   def new_pm
     @item = Item.find(params[:id])
     respond_to do |format|
-      format.html
+      format.html { render :layout => false }
       format.json
     end
   end

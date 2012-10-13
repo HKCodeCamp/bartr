@@ -2,7 +2,7 @@
   <a href="unsale" data-role="button" data-mini="true" data-inline="true">Remove</a>
 
 <% else %>
-  <a href="email" data-role="button" data-mini="true" data-inline="true">Email to Owner</a>
+  <a href="<%= new_pm_item_url(item) %>" data-role="button" data-rel="dialog" data-mini="true" data-inline="true">Email to Owner</a>
 
   <a id="uninterest" href="#" data-url="<%= not_interested_in_item_url(item) %>" data-role="button" data-mini="true" data-theme="b" data-inline="true" class="<%= uninterest_button_class(item) %>">I Dont Want</a>
   <a id="interest" href="#" data-url="<%= interested_in_item_url(item) %>" data-role="button" data-mini="true" data-theme="b" data-inline="true" class="<%= interest_button_class(item) %>">I Want</a>

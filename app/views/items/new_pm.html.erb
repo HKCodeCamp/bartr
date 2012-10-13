@@ -1,14 +1,17 @@
-<h1>Send a message to seller regarding the item:</h1>
-<div class="item">
-  <h1 class="title"><%= @item.title %></h1>
-  <p class="price">$<%= @item.price %></p>
-  <p class="desc"><%= @item.desc %></p>
-  <% if @item.photos.length > 0 %>
-      <%= cl_image_tag(@item.photos[0].path, { size: '125x125', crop: :fit }) %>
-  <% end %>
+<div data-role="page">
+  <div data-role="content">
+    <h2>Send a message to seller regarding the item:</h2>
+
+    <div class="item">
+      <h3 class="title"><%= @item.title %></h3>
+      <p class="price">$<%= @item.price %></p>
+      <p class="desc"><%= @item.desc %></p>
+    </div>
+
+    <%= simple_form_for(@item.item_pms.build, :url => send_pm_item_path(@item)) do |f| %>
+        <%= f.input :message %>
+        <%= f.submit "Send Message" %>
+        <%= link_to "Cancel", item_path(@item) %>
+    <% end %>
+  </div>
 </div>
-<%= simple_form_for(@item.item_pms.build, :url => send_pm_item_path(@item)) do |f| %>
-    <%= f.input :message %>
-    <%= f.submit "Send Message" %>
-    <%= link_to "Cancel", item_path(@item) %>
-<% end %>
