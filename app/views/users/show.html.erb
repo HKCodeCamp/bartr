@@ -10,9 +10,10 @@
   </div>
 
   <div class="actions">
-    <% if @user == current_user %>
+    <% if current_user %>
+      <% if @user == current_user %>
       <p><%= link_to "Edit", edit_user_path(@user) %></p>
-    <% else %>
+      <% end %>
       <% if current_user.is_following?(@user) %>
         <p><%= button_to "Un Follow", un_follow_user_path(@user), :method => :post %></p>
       <% else %>
