@@ -1,4 +1,0 @@
-json.(photo, :id, :name, :content)
-json.image_url do |json|
-  json.url cl_image_path(photo)
-end

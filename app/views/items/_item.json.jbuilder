@@ -1,6 +1,11 @@
 json.(item, :id, :title, :desc, :price, :address, :latitude, :longitude)
-json.thumbnails item.photos do |json, photo|
-  json.image_url do |json|
-    json.url photo.fullpath(:width => 300, :height => 300, :crop => :thumb)
-  end
+
+json.photos item.photos do |json, photo|
+  json.small photo.fullpath(:width => 300, :height => 300, :crop => :thumb)
+  json.medium photo.fullpath(:width => 600, :height => 600, :crop => :thumb)
+  json.large photo.fullpath(:width => 1200, :height => 1200, :crop => :fit)
+end
+
+json.comments item.comments do |json, comment|
+  json.partial! "items/comment", comment: comment
 end
