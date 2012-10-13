@@ -1,0 +1,1 @@
+json.(@user, :id, :name, :followers_count, :created_at, :updated_at, :avatar_url)

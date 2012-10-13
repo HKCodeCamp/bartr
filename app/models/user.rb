@@ -37,4 +37,7 @@ class User < ActiveRecord::Base
     user.followed_bies.include? self
   end
 
+  def avatar_url
+    "http://placekitten.com/200/200"
+  end
 end
