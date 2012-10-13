@@ -1,6 +1,5 @@
 <div class="user">
-  <h1 class="email"><%= @user.email %></h1>
-  <p class="name"><%=  @user.name %></p>
+  <h1 class="name"><%=  @user.name %></h1>
   <p class="description"><%=  @user.desc %></p>
   <p class="followers_count">Followers: <%= @user.followers_count %></p>
   <div class="userItems user-item-list">
@@ -14,7 +13,7 @@
   <div class="actions">
     <% if current_user %>
       <% if @user == current_user %>
-      <p><%= link_to "Edit", edit_user_path(@user) %></p>
+      <p><% link_to "Edit", edit_user_path(@user) %></p>
       <% else %>
         <% if current_user.is_following?(@user) %>
           <p><%= button_to "Un Follow", un_follow_user_path(@user), :method => :post %></p>
@@ -23,6 +22,6 @@
         <% end %>
       <% end %>
     <% end %>
-    <p><%= link_to "Back", users_path %></p>
+    <p><% link_to "Back", users_path %></p>
   </div>
 </div>

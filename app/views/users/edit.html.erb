@@ -1,7 +1,13 @@
 <%= simple_form_for(@user) do |f| %>
-  <%= f.input :email %>
+  <div class="input email optional">
+    <label class="email optional control-label ui-input-text" for="user_email">Email</label>
+    <%= @user.email %>
+  </div>
+  <br/>
   <%= f.input :name  %>
-  <%= f.input :desc, :as => :text %>
+  <br/>
+  <%= f.input :desc, :as => :text ,:label => 'Bio'%>
+  <br/>
   <%= f.button :submit %>
-  <%= link_to "Cancel", user_path(@user) %>
+  <% link_to "Cancel", user_path(@user) %>
 <% end %>
