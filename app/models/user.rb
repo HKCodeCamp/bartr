@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :followed_bies, :through => :followings
   has_many :items, :foreign_key => 'owner_id'
   has_many :comments, :dependent => :destroy
+  has_many :interests, :dependent => :destroy
 
   scope :active_sellers, scoped
 
@@ -39,5 +40,9 @@ class User < ActiveRecord::Base
 
   def avatar_url
     "http://placekitten.com/200/200"
+  end
+
+  def is_interested_in?(item)
+    interests.map(&:item_id).include?(item.id)
   end
 end
