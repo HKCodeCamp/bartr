@@ -47,4 +47,7 @@ class User < ActiveRecord::Base
     bookmarks.map(&:item_id).include?(item.id)
   end
 
+  def avatar_url
+    "http://placekitten.com/200/200"
+  end
 end
