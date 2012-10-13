@@ -32,8 +32,8 @@ function itemRender(i, d) {
   e.css({'background-image': ''});
   var image = $('<img src="/assets/placeholder-1x1.png" class="lazy">').attr('data-original', 'http://placekitten.com/300/300');
   
-  if (d.image_url) {
-	 image.attr('data-original', d.image_url);
+  if (d.photos && d.photos.length > 0) {
+	 image.attr('data-original', d.photos[0].small);
   }
   
   e.append(image);
