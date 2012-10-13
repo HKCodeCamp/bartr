@@ -80,6 +80,37 @@ class ItemsController < ApplicationController
     end
   end
 
+  def interested_in
+    @item = Item.find(params[:id])
+    i = @item.interests.build(:user_id => current_user.id)
+    if  i.save
+      respond_to do |format|
+        format.html { redirect_to @item, notice: "Interest submitted" }
+        format.json { render json: @item }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @item, notice: "Interest NOT submitted", :status => :unprocessable_entity }
+        format.json { render json: @item, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def not_interested_in
+    @item = Item.find(params[:id])
+    if (i = @item.interests.find_by_user_id(current_user.id)) && i.destroy
+      respond_to do |format|
+        format.html { redirect_to @item, notice: "Interest removed" }
+        format.json { render json: @item }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @item, notice: "Interest NOT removed", :status => :unprocessable_entity }
+        format.json { render json: @item, :status => :unprocessable_entity }
+      end
+    end
+  end
+
   def destroy
     @item = Item.find(params[:id])
 
