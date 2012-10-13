@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
     headers['Access-Control-Allow-Origin'] = "*"
 
     @user = current_user
-    @nickname = current_user.name || "Guest"
+    @nickname = current_user.nil? ? "Guest" : current_user.name
 
     if has_coord?
       distance = params["distance"].to_f if params["distance"]
