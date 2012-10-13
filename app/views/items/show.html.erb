@@ -8,7 +8,13 @@
 
     <div class="texts">
       <h1 class="title"><%= @item.title %></h1>
-      <p class="desc"><span class="price">$<%= @item.price %></span> <%= @item.desc %></p>
+      <p class="desc">
+        <span class="price">$<%= @item.price %></span> <%= @item.desc %>
+      </p>
+
+      <% if current_user %>
+        <%= render :partial => 'item_action', :locals => {:item => @item} %>
+      <% end %>
     </div>
   </div>
 

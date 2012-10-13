@@ -10,4 +10,24 @@ module ItemsHelper
       nil
     end
   end
+
+  def is_owner?(item)
+    item.owner == current_user
+  end
+
+  def interest_button_class(item)
+    if current_user.is_interested_in?(item)
+      "hidden"
+    else
+      ""
+    end
+  end
+
+  def uninterest_button_class(item)
+    unless current_user.is_interested_in?(item)
+      "hidden"
+    else
+      ""
+    end
+  end
 end
