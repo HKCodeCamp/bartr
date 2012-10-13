@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121012193627) do
+ActiveRecord::Schema.define(:version => 20121013021140) do
 
   create_table "attachinary_files", :force => true do |t|
     t.integer  "attachinariable_id"
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(:version => 20121012193627) do
   end
 
   add_index "attachinary_files", ["attachinariable_type", "attachinariable_id", "scope"], :name => "by_scoped_parent"
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.text     "comment"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["item_id"], :name => "index_comments_on_item_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -59,13 +70,13 @@ ActiveRecord::Schema.define(:version => 20121012193627) do
     t.string   "title"
     t.text     "desc"
     t.string   "category"
-    t.float    "price"
+    t.decimal  "price",      :precision => 11, :scale => 2
     t.string   "status"
     t.text     "tag"
     t.datetime "deleted_at"
     t.integer  "owner_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.text     "address"
     t.float    "latitude"
     t.float    "longitude"

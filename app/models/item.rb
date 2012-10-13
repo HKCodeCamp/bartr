@@ -6,6 +6,7 @@ class Item < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
 
   belongs_to :owner, :class_name => 'User'
+  has_many :comments, :dependent => :destroy
 
   validates :title, :length => { :minimum => 2, :maximum => 50 }
   validates :desc, :length => { :minimum => 5, :maximum => 3000 }
