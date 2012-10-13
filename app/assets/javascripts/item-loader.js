@@ -37,7 +37,9 @@ function itemRender(i, d) {
   }
   
   var title = $('<div class="title"></div>').html(d.title);
-  var price = $('<div class="price"></div>').html(d.price);
+  
+  var int_price = parseInt(d.price);
+  var price = $('<div class="price"></div>').html(int_price > 0 ? "$"+int_price : 'Free');
 
   e.append(image).append(title).append(price);
 
