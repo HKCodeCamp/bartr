@@ -1,0 +1,12 @@
+Hi <%= @nickname %>, <p/>
+
+<% if !@user.nil? %>
+<p>You have 3 items that is actively on sell.</p>
+
+<% @user.items.each do |item| %>
+      <%= render "items/result_item", :item => item %>
+<% end %>
+
+<% end %>
+<p>
+<p>
