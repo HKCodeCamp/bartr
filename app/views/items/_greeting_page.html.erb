@@ -1,0 +1,14 @@
+Hi <%= @nickname %>, <p/>
+
+<p>You have <%= @user.items.length.to_s %> items that is actively on sell.</p>
+
+<% if @user.items.length > 0 %>
+<%  @user.items.each { |item| %>
+<%       if item.photos.length > 0  %>
+            <div>
+              <a href="<%= url_for( item_url(item)) %>"  rel="external">  <%= cl_image_tag(item.photos[0].path, { size: '50x50', crop: :fit }) %> </a>
+            </div>
+<%       end  %>
+<%  } %>
+
+<% end %>
