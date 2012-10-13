@@ -9,3 +9,12 @@ end
 json.comments @item.comments do |json, comment|
   json.partial! "items/comment", comment: comment
 end
+
+json.interests @item.interests do |json, interest|
+  json.id interest.id
+  json.user do
+    json.id interest.user.id
+    json.name interest.user.name
+    json.email interest.user.email
+  end
+end
