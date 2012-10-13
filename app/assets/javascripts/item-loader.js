@@ -36,7 +36,10 @@ function itemRender(i, d) {
 	 image.attr('data-original', d.photos[0].small);
   }
   
-  e.append(image);
+  var title = $('<div class="title"></div>').html(d.title);
+  var price = $('<div class="price"></div>').html(d.price);
+
+  e.append(image).append(title).append(price);
 
   return e;
 }
