@@ -111,6 +111,37 @@ class ItemsController < ApplicationController
     end
   end
 
+  def bookmark
+    @item = Item.find(params[:id])
+    bookmark = @item.bookmarks.build(:user_id => current_user.id)
+    if bookmark.save
+      respond_to do |format|
+        format.html { redirect_to @item, notice: "Bookmark submitted" }
+        format.json { render json: @item }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @item, notice: "Bookmark NOT submitted", :status => :unprocessable_entity }
+        format.json { render json: @item, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def un_bookmark
+    @item = Item.find(params[:id])
+    if (bookmark = @item.bookmarks.find_by_user_id(current_user.id)) && bookmark.destroy
+      respond_to do |format|
+        format.html { redirect_to @item, notice: "Bookmark removed" }
+        format.json { render json: @item }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @item, notice: "Bookmark NOT removed", :status => :unprocessable_entity }
+        format.json { render json: @item, :status => :unprocessable_entity }
+      end
+    end
+  end
+
   def destroy
     @item = Item.find(params[:id])
 

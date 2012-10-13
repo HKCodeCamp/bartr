@@ -31,7 +31,9 @@ Bartr::Application.routes.draw do
       get 'nearby'
     end
     member do
-      post :comment, :interested_in, :not_interested_in
+      post :comment
+      post :interested_in, :not_interested_in
+      post :bookmark, :un_bookmark
     end
   end
 
