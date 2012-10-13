@@ -1,14 +1,17 @@
 class ItemsController < ApplicationController
+  include ItemsHelper
+
   before_filter :require_user, :only => [:create, :new, :destroy, :comment]
+  before_filter :setup_coordinate, :only => [:nearby, :index]
 
   def nearby
     # TODO remember to remove this
     headers['Access-Control-Allow-Origin'] = "*"
-    if params[:lat] && params[:lon]
-      coord = [params["lat"].to_f, params["lon"].to_f]
+
+    if has_coord?
       distance = params["distance"].to_f if params["distance"]
-      distance = 50.0 if distance == nil || distance > 1000 # proper limitation here
-      @items = Item.near(coord, distance, :units => :km)
+      distance = 5.0 if distance == nil || distance > 1000 # proper limitation here
+      @items = Item.near(@coord, distance, :units => :km)
     else
       @items = Item.find(:all)  
     end
@@ -148,6 +151,13 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to items_url }
       format.json { render json: {:status => :ok} }
+    end
+  end
+
+  private
+  def setup_coordinate
+    if params[:lat] && params[:lon]
+      @coord = [params["lat"].to_f, params["lon"].to_f]
     end
   end
 end

@@ -1,14 +1,45 @@
 .item-list div.item {
 	 float: left;
-	 width: 32%;
-	 padding:0.5%;
+	 width: 33%;
+/*	 padding:0.5%; */
 	 padding-bottom:none;
+	 position:relative;
+/*	 border-radius:2em; */
+/*	 border: 1px solid #ccc; */
+
 }
 
 .item-list div.item img {
 	 width:100%;
 	 height:auto;
-	 border-radius:2em;
-	 border: 1px solid #ccc;
 }
+
+.item-list div.item div.title {
+	 height: 1em;
+	 background-color:#000;
+	 opacity:0.9;
+	 position:absolute;
+	 bottom:0;
+	 left:0;
+	 padding-top:0.3em;
+	 padding-bottom:0.3em;
+	 width:100%;
+	 color:#fff;
+	 font-size:1.5em;
+}
+
+.item-list div.item div.price {
+	 height: 1em;
+	 position:absolute;
+	 top:0.5em;
+	 right:0.5em;
+	 width:100%;
+	 text-align:right;
+	 color:#fff;
+	 text-shadow: black 0.1em 0.1em 0.2em;
+	 font-size:2.5em;
+}
+
+
+
 
