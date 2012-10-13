@@ -4,4 +4,9 @@ class ItemPm < ActiveRecord::Base
   attr_accessible :message
 
   validates_presence_of :item_id, :sender_id, :message
+
+  after_create do
+    mail = ItemMailer.delay.item_pm(self)
+  end
+
 end
