@@ -150,6 +150,31 @@ class ItemsController < ApplicationController
     end
   end
 
+  def new_pm
+    @item = Item.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
+  def send_pm
+    @item = Item.find(params[:id])
+    item_pm = @item.item_pms.build(params[:item_pm])
+    item_pm.sender = current_user
+    if item_pm.save
+      respond_to do |format|
+        format.html { redirect_to @item, notice: "Message sent" }
+        format.json { render json: @item }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @item, notice: "Message failed to send", :status => :unprocessable_entity }
+        format.json { render json: @item, :status => :unprocessable_entity }
+      end
+    end
+  end
+
   def destroy
     @item = Item.find(params[:id])
 

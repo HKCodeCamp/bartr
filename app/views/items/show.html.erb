@@ -1,14 +1,21 @@
 <div class="item">
-  <h1 class="title"><%= @item.title %></h1>
-  <p class="price">$<%= @item.price %></p>
-  <p class="desc"><%= @item.desc %></p>
-  <% if @item.photos.length > 0 %>
-    <%= cl_image_tag(@item.photos[0].path, { size: '125x125', crop: :fit }) %>
-  <% end %>
-</div>
+  <div class="details">
+    <div class="image">
+      <% if @item.photos.length > 0 %>
+        <%= cl_image_tag(@item.photos[0].path, { size: '125x125', crop: :fit }) %>
+      <% end %>
+    </div>
+
+    <div class="texts">
+      <h1 class="title"><%= @item.title %></h1>
+      <p class="desc"><span class="price">$<%= @item.price %></span> <%= @item.desc %></p>
+    </div>
+  </div>
+
   <div class="comments">
     <h1>Comments</h1>
-    <% @items.comments.any? %>
+
+    <% if @item.comments.any? %>
       <% @item.comments.reverse.each do |comment| %>
         <div class="comment">
           <p class="commentBy"><%= comment.user.name %></p>
@@ -18,7 +25,7 @@
     <% else %>
       <p>No comment yet, leave one now!</p>
     <% end %>
- </div>
+
     <% if current_user %>
       <div class="comment_form" data-item-id="<%= @item.id %>">
         <%= simple_form_for(@item.comments.build, :url => comment_item_path(@item) ) do |f| %>
@@ -29,5 +36,6 @@
     <% else %>
        <a href="/users/sign_up" data-role="button">Sign Up</a>
     <% end %>
+   </div>
 
 </div>

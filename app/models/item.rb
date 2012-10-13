@@ -9,6 +9,7 @@ class Item < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :interests, :dependent => :destroy
   has_many :bookmarks, :dependent => :destroy
+  has_many :item_pms
 
   validates :title, :length => { :minimum => 2, :maximum => 50 }
   validates :desc, :length => { :minimum => 5, :maximum => 3000 }
