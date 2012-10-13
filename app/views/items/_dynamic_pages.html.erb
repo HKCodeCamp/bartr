@@ -1,12 +1,33 @@
 <div data-role="page" id="item-list" class="item-list-page"  data-dom-cache="true">
-  <%= render "layouts/application/header" %>
-  <div class="item-list"></div>
+  <!-- XXX: Put in template -->
+  <div data-role="header" data-position="fixed">
+	 <div data-role="controlgroup" data-mini="true" data-type="horizontal" style="display:inline;float:left;">
+		<a href="#item-map" data-role="button">Map</a>
+		<a href="#item-list" data-role="button" class="ui-btn-active">List</a>
+	 </div>
+	 <h1><a href="/">Bartr</a></h1>
+	 <a href="#settingsPopup" data-rel="popup" data-icon="gear" class="ui-btn-right" data-transition="fade" data-iconpos="notext">Settings</a>
+  </div>
+
+ <div class="item-list"></div>
+
   <%= render "layouts/application/footer" %>	 
+
 </div>
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBqCoJRNHHzZzNBSQkQWa2RsPdWRomf3es&sensor=false"></script>
  
 <div data-role="page" id="item-map" class="item-map-page"  data-dom-cache="true">
-  <%= render "layouts/application/header" %>
-  <div class="item-map" id="map-canvas"></div>
+
+  <div data-role="header" data-position="fixed">
+	 <!-- XXX: Put in template -->
+	 <div data-role="controlgroup" data-mini="true" data-type="horizontal" style="display:inline;float:left;">
+		<a href="#item-map" data-role="button" class="ui-btn-active">Map</a>
+		<a href="#item-list" data-role="button" >List</a>
+	 </div>
+	 <h1><a href="/">Bartr</a></h1>
+	 <a href="#settingsPopup" data-rel="popup" data-icon="gear" class="ui-btn-right" data-transition="fade" data-iconpos="notext">Settings</a>
+  </div>
+
+ <div class="item-map" id="map-canvas"></div>
   <%= render "layouts/application/footer" %>
 </div>
