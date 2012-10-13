@@ -12,6 +12,9 @@ $(document).on("pageinit", function(){
               mapTypeId: google.maps.MapTypeId.ROADMAP
             };
       console.log(mapOptions)
+      if($("body").width() > 0 && $("body").height() > 0 ){
+        $("#map-canvas").width($("body").width()).height($("body").height());
+      }
       var map = new google.maps.Map($("#map-canvas")[0], mapOptions);
       var myMarker = new google.maps.Marker({
             position: myLatlng,

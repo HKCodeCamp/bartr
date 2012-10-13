@@ -1,4 +1,4 @@
-#map-canvas { width: 320px; height: 480px;}
+#map-canvas { min-width: 320px; min-height: 480px;}
 
 .item-infowindow-content {
   overflow: hidden;
@@ -12,4 +12,10 @@
   height:80px;
   margin-top: 10px;
   float: right;
+}
+
+.user-item-list .thumbnail { display: inline-block; }
+.user-item-list .detail {
+display: inline-block;
+vertical-align: top;
 }
