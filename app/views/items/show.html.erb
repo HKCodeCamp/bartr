@@ -1,13 +1,15 @@
 <div class="item">
-  <div class="image">
-    <% if @item.photos.length > 0 %>
-      <%= cl_image_tag(@item.photos[0].path, { size: '125x125', crop: :fit }) %>
-    <% end %>
-  </div>
+  <div class="details">
+    <div class="image">
+      <% if @item.photos.length > 0 %>
+        <%= cl_image_tag(@item.photos[0].path, { size: '125x125', crop: :fit }) %>
+      <% end %>
+    </div>
 
-  <div class="texts">
-    <h1 class="title"><%= @item.title %></h1>
-    <p class="desc"><span class="price">$<%= @item.price %></span> <%= @item.desc %></p>
+    <div class="texts">
+      <h1 class="title"><%= @item.title %></h1>
+      <p class="desc"><span class="price">$<%= @item.price %></span> <%= @item.desc %></p>
+    </div>
   </div>
 
   <div class="comments">

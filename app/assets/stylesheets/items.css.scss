@@ -1,13 +1,19 @@
 .item {
-  .image {
-    float: left;
-    margin-right: 10px;
+  .details {
+    .image {
+      float: left;
+      margin-right: 10px;
+    }
+
+    .texts {
+      .price {
+        color: #222;
+        font-weight: bolder;
+      }
+    }
   }
 
-  .texts {
-    .price {
-      color: #222;
-      font-weight: bolder;
-    }
+  .comments {
+    clear: both;
   }
 }
