@@ -3,10 +3,12 @@
   <p class="name"><%=  @user.name %></p>
   <p class="description"><%=  @user.desc %></p>
   <p class="followers_count">Followers: <%= @user.followers_count %></p>
-  <div class="userItems">
+  <div class="userItems user-item-list">
+    <ul data-role="listview">
     <% @user.items.each do |item| %>
       <%= render "items/result_item", :item => item %>
     <% end %>
+    </ul>
   </div>
 
   <div class="actions">
