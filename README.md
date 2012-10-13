@@ -68,6 +68,7 @@ createdb bartr_development
   - Copy config/application.default.yml to config/application.yml and fill in proper keys
 
   - (For Production ENV) heroku config: https://devcenter.heroku.com/articles/config-vars
+  - heroku config:add HEROKU_API_KEY=xxxxx APP_NAME=yyyy ( for delayed_job worker )
 
 - Startup the server:  
 
