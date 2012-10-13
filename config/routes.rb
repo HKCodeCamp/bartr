@@ -30,6 +30,9 @@ Bartr::Application.routes.draw do
     collection do
       get 'nearby'
     end
+    member do
+      post :comment
+    end
   end
 
   # Sample resource route with options:
