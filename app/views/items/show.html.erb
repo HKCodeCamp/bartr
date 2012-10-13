@@ -8,7 +8,7 @@
 </div>
   <div class="comments">
     <h1>Comments</h1>
-    <% @items.comments.any? %>
+    <% if @items && @items.comments.any? %>
       <% @item.comments.reverse.each do |comment| %>
         <div class="comment">
           <p class="commentBy"><%= comment.user.name %></p>
@@ -29,5 +29,4 @@
     <% else %>
        <a href="/users/sign_up" data-role="button">Sign Up</a>
     <% end %>
-
 </div>
