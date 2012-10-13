@@ -21,29 +21,35 @@
   <div class="interests">
     <h1>Interested users</h1>
     <% if @item.interests.any? %>
+
+      <ul data-role="listview">
         <% @item.interests.each do |interest| %>
-            <div class="interest">
+            <li class="interest">
               <p class="interestBy"><%= interest.user.name %></p>
-            </div>
+            </li>
         <% end %>
+      </ul>
     <% else %>
-        <p>No one is interested yet!</p>
+        <p class="alert alert-info">No one is interested yet!</p>
     <% end %>
   </div>
 
   <div class="comments">
     <h1>Comments</h1>
-
     <% if @item.comments.any? %>
+      <ul data-role="listview">
       <% @item.comments.reverse.each do |comment| %>
-        <div class="comment">
+        <li class="comment">
           <p class="commentBy"><%= comment.user.name %></p>
           <p class="commentMsg"><%= comment.comment %></p>
-        </div>
+        </li>
       <% end %>
+      </ul>
     <% else %>
-      <p>No comment yet, leave one now!</p>
+      <p class="alert alert-info">No comment yet, leave one now!</p>
     <% end %>
+
+    <p></p>
 
     <% if current_user %>
       <div class="comment_form" data-item-id="<%= @item.id %>">
