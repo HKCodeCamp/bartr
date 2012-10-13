@@ -1,0 +1,14 @@
+Hi <%= @item_pm.item.owner.name %>
+
+<%= @item_pm.sender.name %> sent you a message regarding the following item:
+<%= item_url(@item_pm.item) %>
+
+
+Message:
+
+
+<%= @item_pm.message %>
+
+
+Your Best Friend,
+<a href="bartr-app.herokuapp.com">Bartr</a>
