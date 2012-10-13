@@ -59,13 +59,13 @@ ActiveRecord::Schema.define(:version => 20121012193627) do
     t.string   "title"
     t.text     "desc"
     t.string   "category"
-    t.float    "price"
+    t.decimal  "price",      :precision => 11, :scale => 2
     t.string   "status"
     t.text     "tag"
     t.datetime "deleted_at"
     t.integer  "owner_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.text     "address"
     t.float    "latitude"
     t.float    "longitude"
