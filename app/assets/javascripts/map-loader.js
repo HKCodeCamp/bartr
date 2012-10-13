@@ -31,7 +31,7 @@ $(document).on("pageinit", function(){
                       +"<div class='item-info-text'>"
                       + "<h1><a href='/items/"+item.id+"/'>"+item.title+"</a></h1>"
                       + "<p class='item-desc'>"+item.desc+"</p>"
-                      + "<p class='item-price'>"+item.price+"</p>"
+                      + "<p class='item-price'>Price: $"+item.price+"</p>"
                       +"</div>"
                       + "<img class='item-thumb' src='"+thumb+"'>"
                       + "</div>";

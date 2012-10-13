@@ -4,7 +4,7 @@
   overflow: hidden;
 }
 .item-infowindow-content h1 { margin: 0; font-size: 1.1em; }
-.item-infowindow-content h1 { margin: 0.2em 0; font-size: 1em; }
+.item-infowindow-content p { margin: 0.2em 0; font-size: 1em; }
 
 .item-infowindow-content .item-info-text { width: 110px; float:left;}
 .item-infowindow-content .item-thumb {
