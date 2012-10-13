@@ -39,15 +39,15 @@ class User < ActiveRecord::Base
     user.followed_bies.include? self
   end
 
+  def avatar_url
+    "http://placekitten.com/200/200"
+  end
+
   def is_interested_in?(item)
     interests.map(&:item_id).include?(item.id)
   end
 
   def has_bookmarked?(item)
     bookmarks.map(&:item_id).include?(item.id)
-  end
-
-  def avatar_url
-    "http://placekitten.com/200/200"
   end
 end
