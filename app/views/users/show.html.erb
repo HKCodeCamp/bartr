@@ -15,11 +15,12 @@
     <% if current_user %>
       <% if @user == current_user %>
       <p><%= link_to "Edit", edit_user_path(@user) %></p>
-      <% end %>
-      <% if current_user.is_following?(@user) %>
-        <p><%= button_to "Un Follow", un_follow_user_path(@user), :method => :post %></p>
       <% else %>
-        <p><%= button_to "Follow", follow_user_path(@user), :method => :post %></p>
+        <% if current_user.is_following?(@user) %>
+          <p><%= button_to "Un Follow", un_follow_user_path(@user), :method => :post %></p>
+        <% else %>
+          <p><%= button_to "Follow", follow_user_path(@user), :method => :post %></p>
+        <% end %>
       <% end %>
     <% end %>
     <p><%= link_to "Back", users_path %></p>

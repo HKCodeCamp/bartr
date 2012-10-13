@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :deleted_at, :desc, :name, :status, :tag, :mobile_no
-  validates_presence_of :name
+  # validates_presence_of :name
 
   before_validation(:on => :create) do
     self.name ||= self.email.match(/^[A-Za-z0-9\-_\.]+/).to_s
