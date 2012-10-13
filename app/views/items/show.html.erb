@@ -8,7 +8,7 @@
 </div>
   <div class="comments">
     <h1>Comments</h1>
-    <% if @items && @items.comments.any? %>
+    <% if @item.comments.any? %>
       <% @item.comments.reverse.each do |comment| %>
         <div class="comment">
           <p class="commentBy"><%= comment.user.name %></p>
