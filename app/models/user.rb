@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  attr_accessible :mobile_no
   include User::SmsVerifiable
   include User::Adminable
   
@@ -9,7 +8,12 @@ class User < ActiveRecord::Base
   devise :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :deleted_at, :desc, :name, :status, :tag
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :deleted_at, :desc, :name, :status, :tag, :mobile_no
+  validates_presence_of :name
+
+  before_validation(:on => :create) do
+    self.name ||= self.email.match(/^[A-Za-z0-9\-_\.]+/).to_s
+  end
 
   has_and_belongs_to_many :roles
   has_many :followings, :class_name => "Follower", :foreign_key => "following_id", :dependent => :destroy
