@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013052100) do
+ActiveRecord::Schema.define(:version => 20121013073237) do
 
   create_table "attachinary_files", :force => true do |t|
     t.integer  "attachinariable_id"
@@ -87,6 +87,17 @@ ActiveRecord::Schema.define(:version => 20121013052100) do
   add_index "interests", ["item_id"], :name => "index_interests_on_item_id"
   add_index "interests", ["status"], :name => "index_interests_on_status"
   add_index "interests", ["user_id"], :name => "index_interests_on_user_id"
+
+  create_table "item_pms", :force => true do |t|
+    t.integer  "item_id"
+    t.integer  "sender_id"
+    t.text     "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "item_pms", ["item_id"], :name => "index_item_pms_on_item_id"
+  add_index "item_pms", ["sender_id"], :name => "index_item_pms_on_sender_id"
 
   create_table "items", :force => true do |t|
     t.string   "title"
