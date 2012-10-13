@@ -8,8 +8,13 @@ class ItemsController < ApplicationController
     # TODO remember to remove this
     headers['Access-Control-Allow-Origin'] = "*"
 
+    @user = current_user
+    @nickname = current_user.name || "Guest"
+
     if has_coord?
       distance = params["distance"].to_f if params["distance"]
+      
+      
       distance = 5.0 if distance == nil || distance > 1000 # proper limitation here
       @items = Item.near(@coord, distance, :units => :km)
     else
