@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121012160059) do
+ActiveRecord::Schema.define(:version => 20121012193627) do
 
   create_table "attachinary_files", :force => true do |t|
     t.integer  "attachinariable_id"
@@ -29,6 +29,22 @@ ActiveRecord::Schema.define(:version => 20121012160059) do
 
   add_index "attachinary_files", ["attachinariable_type", "attachinariable_id", "scope"], :name => "by_scoped_parent"
 
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
   create_table "followers", :force => true do |t|
     t.integer  "followed_by_id"
     t.integer  "following_id"
@@ -43,13 +59,13 @@ ActiveRecord::Schema.define(:version => 20121012160059) do
     t.string   "title"
     t.text     "desc"
     t.string   "category"
-    t.decimal  "price",      :precision => 11, :scale => 2
+    t.float    "price"
     t.string   "status"
     t.text     "tag"
     t.datetime "deleted_at"
     t.integer  "owner_id"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.text     "address"
     t.float    "latitude"
     t.float    "longitude"
