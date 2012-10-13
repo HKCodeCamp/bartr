@@ -15,7 +15,11 @@
 }
 
 .user-item-list .thumbnail { display: inline-block; }
-.user-item-list .detail {
+.user-item-list .details {
 display: inline-block;
 vertical-align: top;
+}
+.user-item-list .details .title {
+  font-size: 1.1em;
+  font-weight: bold;
 }

@@ -8,7 +8,9 @@
   <div class="details">
     <p class="id" style='display:none;'><%= item.id %></p>
     <p class="title"><%= item.title %></p>
-    <p class="desc"><span class="price"><%= item.price %></span> <%= item.desc %></p>
+    <p class="price">$ <%= item.price %></p>
+    <p class="desc"><%= item.desc %></p>
+
     <% if item.photos.length > 0 %>
         <%= cl_image_tag(item.photos[0].path, { size: '125x125', crop: :fit }) %>
     <% end %>
