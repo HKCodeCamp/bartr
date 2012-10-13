@@ -18,6 +18,19 @@
     </div>
   </div>
 
+  <div class="interests">
+    <h1>Interested users</h1>
+    <% if @item.interests.any? %>
+        <% @item.interests.each do |interest| %>
+            <div class="interest">
+              <p class="interestBy"><%= interest.user.name %></p>
+            </div>
+        <% end %>
+    <% else %>
+        <p>No one is interested yet!</p>
+    <% end %>
+  </div>
+
   <div class="comments">
     <h1>Comments</h1>
 
