@@ -25,12 +25,15 @@ $(document).on("pageinit", function(){
         var pos =   new google.maps.LatLng (item.latitude, item.longitude);
         if(!pos){ console.log("pos failed"); return true; }
         console.log(pos, item);
-
+        var covers = (item.photos.length>0) ? item.photos[0]: {};
+        var thumb = covers.thumb ? covers.thumb : "http://placekitten.com/160/160";
         var content = "<div class='item-infowindow-content'>"
+                      +"<div class='item-info-text'>"
                       + "<h1><a href='/items/"+item.id+"/'>"+item.title+"</a></h1>"
                       + "<p class='item-desc'>"+item.desc+"</p>"
                       + "<p class='item-price'>"+item.price+"</p>"
-
+                      +"</div>"
+                      + "<img class='item-thumb' src='"+thumb+"'>"
                       + "</div>";
         var marker = new google.maps.Marker({
             position: pos,
