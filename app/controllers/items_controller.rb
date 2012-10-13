@@ -1,14 +1,17 @@
 class ItemsController < ApplicationController
+  include ItemsHelper
+
   before_filter :require_user, :only => [:create, :new, :destroy, :comment]
+  before_filter :setup_coordinate, :only => [:nearby, :index]
 
   def nearby
     # TODO remember to remove this
     headers['Access-Control-Allow-Origin'] = "*"
-    if params[:lat] && params[:lon]
-      coord = [params["lat"].to_f, params["lon"].to_f]
+
+    if has_coord?
       distance = params["distance"].to_f if params["distance"]
-      distance = 50.0 if distance == nil || distance > 1000 # proper limitation here
-      @items = Item.near(coord, distance, :units => :km)
+      distance = 5.0 if distance == nil || distance > 1000 # proper limitation here
+      @items = Item.near(@coord, distance, :units => :km)
     else
       @items = Item.find(:all)  
     end
@@ -111,12 +114,50 @@ class ItemsController < ApplicationController
     end
   end
 
+  def bookmark
+    @item = Item.find(params[:id])
+    bookmark = @item.bookmarks.build(:user_id => current_user.id)
+    if bookmark.save
+      respond_to do |format|
+        format.html { redirect_to @item, notice: "Bookmark submitted" }
+        format.json { render json: @item }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @item, notice: "Bookmark NOT submitted", :status => :unprocessable_entity }
+        format.json { render json: @item, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def un_bookmark
+    @item = Item.find(params[:id])
+    if (bookmark = @item.bookmarks.find_by_user_id(current_user.id)) && bookmark.destroy
+      respond_to do |format|
+        format.html { redirect_to @item, notice: "Bookmark removed" }
+        format.json { render json: @item }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @item, notice: "Bookmark NOT removed", :status => :unprocessable_entity }
+        format.json { render json: @item, :status => :unprocessable_entity }
+      end
+    end
+  end
+
   def destroy
     @item = Item.find(params[:id])
 
     respond_to do |format|
       format.html { redirect_to items_url }
       format.json { render json: {:status => :ok} }
+    end
+  end
+
+  private
+  def setup_coordinate
+    if params[:lat] && params[:lon]
+      @coord = [params["lat"].to_f, params["lon"].to_f]
     end
   end
 end

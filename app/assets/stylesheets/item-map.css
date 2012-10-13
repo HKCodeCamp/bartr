@@ -1,1 +1,21 @@
-#map-canvas { width: 320px; height: 480px;}
+#map-canvas { min-width: 320px; min-height: 480px;}
+
+.item-infowindow-content {
+  overflow: hidden;
+}
+.item-infowindow-content h1 { margin: 0; font-size: 1.1em; }
+.item-infowindow-content p { margin: 0.2em 0; font-size: 1em; }
+
+.item-infowindow-content .item-info-text { width: 110px; float:left;}
+.item-infowindow-content .item-thumb {
+  width: 80px;
+  height:80px;
+  margin-top: 10px;
+  float: right;
+}
+
+.user-item-list .thumbnail { display: inline-block; }
+.user-item-list .detail {
+display: inline-block;
+vertical-align: top;
+}

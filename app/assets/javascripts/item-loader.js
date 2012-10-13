@@ -30,13 +30,18 @@ function itemRender(i, d) {
   });
 
   e.css({'background-image': ''});
-  var image = $('<img src="/assets/placeholder-1x1.png" class="lazy">').attr('data-original', 'http://placekitten.com/300/300');
+  var image = $('<img src="/assets/placeholder-1x1.png" class="lazy">');
   
   if (d.photos && d.photos.length > 0) {
 	 image.attr('data-original', d.photos[0].small);
   }
   
-  e.append(image);
+  var title = $('<div class="title"></div>').html(d.title);
+  
+  var int_price = parseInt(d.price);
+  var price = $('<div class="price"></div>').html(int_price > 0 ? "$"+int_price : 'Free');
+
+  e.append(image).append(title).append(price);
 
   return e;
 }

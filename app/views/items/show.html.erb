@@ -8,20 +8,26 @@
 </div>
   <div class="comments">
     <h1>Comments</h1>
-    <% @item.comments.reverse.each do |comment| %>
-      <div class="comment">
-        <p class="commentBy"><%= comment.user.name %></p>
-        <p class="commentMsg"><%= comment.comment %></p>
-      </div>
+    <% @items.comments.any? %>
+      <% @item.comments.reverse.each do |comment| %>
+        <div class="comment">
+          <p class="commentBy"><%= comment.user.name %></p>
+          <p class="commentMsg"><%= comment.comment %></p>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No comment yet, leave one now!</p>
     <% end %>
  </div>
     <% if current_user %>
       <div class="comment_form" data-item-id="<%= @item.id %>">
         <%= simple_form_for(@item.comments.build, :url => comment_item_path(@item) ) do |f| %>
-            <%= f.input :comment, :label => false, :placeholder => "Post a comment abour the item here" %>
+            <%= f.input :comment, :label => false, :placeholder => "Post a comment about the item here" %>
             <%= f.submit "Comment" %>
         <% end %>
       </div>
+    <% else %>
+       <a href="/users/sign_up" data-role="button">Sign Up</a>
     <% end %>
 
 </div>

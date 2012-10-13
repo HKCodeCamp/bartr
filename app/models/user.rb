@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :items, :foreign_key => 'owner_id'
   has_many :comments, :dependent => :destroy
   has_many :interests, :dependent => :destroy
+  has_many :bookmarks, :dependent => :destroy
 
   scope :active_sellers, scoped
 
@@ -44,5 +45,9 @@ class User < ActiveRecord::Base
 
   def is_interested_in?(item)
     interests.map(&:item_id).include?(item.id)
+  end
+
+  def has_bookmarked?(item)
+    bookmarks.map(&:item_id).include?(item.id)
   end
 end

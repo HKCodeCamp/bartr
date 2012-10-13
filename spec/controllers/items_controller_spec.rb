@@ -27,4 +27,24 @@ describe ItemsController do
       end
   end
 
+  describe "POST 'bookmark'" do
+    it "should add bookmark" do
+      n = item.bookmarks.count
+      post 'bookmark', :id => item.id
+
+      item.bookmarks(true).count.should eq(n + 1)
+    end
+  end
+
+  describe "POST 'un_bookmark'" do
+    it "should remove bookmark" do
+      i = item.bookmarks.create(:user_id => current_user.id)
+      current_user.should be_has_bookmarked(item)
+      post 'un_bookmark', :id => item.id
+
+      current_user.bookmarks(true) # reload
+      current_user.should_not be_has_bookmarked(item)
+    end
+  end
+
 end
