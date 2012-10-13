@@ -1,7 +1,9 @@
-<h1>Hello!</h1>
+<h1>Welcome to Bartr!</h1>
 
-<a href="#item-map">Item Map</a>
-<a href="#item-list">Item List</a>
+<ul data-role="listview">
+  <li><a href="#item-map">View Items on Map</a></li>
+  <li><a href="#item-list">View Items on List</a></li>
+</ul>
 
 <% content_for :footer do %>
   <%= render :partial => "dynamic_pages" %>
