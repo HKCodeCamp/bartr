@@ -12,8 +12,3 @@
 	 border: 1px solid #ccc;
 }
 
-.item .thumbnail { display:inline-block; }
-.item .details { 
-  display: inline-block;
-  vertical-align: top;
-}

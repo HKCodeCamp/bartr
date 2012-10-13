@@ -27,6 +27,10 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   FactoryGirl.find_definitions
 
+  # Devise
+  config.include Devise::TestHelpers, :type => :controller
+  config.include ControllerHelpers, :type => :controller
+
   # Default rspec settings
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
