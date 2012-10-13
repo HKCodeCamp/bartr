@@ -1,3 +1,4 @@
+var currentMarkerWindow = null;
 $(document).on("pageinit", function(){
 
   $(".item-map-page").on('pageshow', function(){
@@ -7,7 +8,7 @@ $(document).on("pageinit", function(){
               
       var mapOptions = {
               center: myLatlng,
-              zoom: 16,
+              zoom: 17,
               mapTypeId: google.maps.MapTypeId.ROADMAP
             };
       console.log(mapOptions)
@@ -15,6 +16,7 @@ $(document).on("pageinit", function(){
       var myMarker = new google.maps.Marker({
             position: myLatlng,
             map: map,
+            icon: 'http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png',
             title: 'You are here!'
         });
 
@@ -22,11 +24,27 @@ $(document).on("pageinit", function(){
         if(!item){ console.log("item fail");return true; }
         var pos =   new google.maps.LatLng (item.latitude, item.longitude);
         if(!pos){ console.log("pos failed"); return true; }
-        console.log(pos);
+        console.log(pos, item);
+
+        var content = "<div class='item-infowindow-content'>"
+                      + "<h1><a href='/items/"+item.id+"/'>"+item.title+"</a></h1>"
+                      + "<p class='item-desc'>"+item.desc+"</p>"
+                      + "<p class='item-price'>"+item.price+"</p>"
+
+                      + "</div>";
         var marker = new google.maps.Marker({
             position: pos,
             map: map,
+            animation: google.maps.Animation.DROP,
             title: item.title
+        });
+        var infowindow = new google.maps.InfoWindow({
+            content: content
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+          if(!!window.currentMarkerWindow){ currentMarkerWindow.close(); }
+          window.currentMarkerWindow = infowindow;
+          infowindow.open(map,marker);
         });
       }, function(){}) 
     }
