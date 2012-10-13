@@ -1,5 +1,5 @@
 <div data-role="header" data-position="fixed">
-  <a href="/items/new" data-mini="true" data-icon="plus" class="ui-btn-left">Sell Stuff</a>
+ <a href="/items/new" data-mini="true" data-icon="plus" class="ui-btn-left">Sell Stuff</a>
  <h1><a href="/">Bartr</a></h1>
  <a href="#settingsPopup" data-rel="popup" data-mini="true" data-icon="gear" class="ui-btn-right" data-transition="fade">Settings</a>
 </div>
@@ -17,10 +17,10 @@
               <li><%= link_to "Verify Account", sms_index_path %></li>
             <% end %>
           <% else %>
-            <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <li><%= link_to "Create Account", new_user_registration_path %></li>
             <li><%= link_to "Sign in", new_user_session_path %></li>
             <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :rel => "external" %></li>
-          <% end -%>
+         <% end -%>
   </ul>
 </div>
 

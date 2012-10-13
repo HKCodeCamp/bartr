@@ -32,6 +32,7 @@ gem 'attachinary'
 
 gem 'delayed_job'
 gem 'delayed_job_active_record'
+gem "workless", "~> 1.1.0"
 
 # Gems used only for assets and not required
 # in production environments by default.

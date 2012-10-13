@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_filter :require_user, :only => [:create, :new, :destroy]
+  before_filter :require_user, :only => [:create, :new, :destroy, :comment]
 
   def nearby
     # TODO remember to remove this
@@ -41,12 +41,12 @@ class ItemsController < ApplicationController
     if @item.save
       respond_to do |format|
         format.html { redirect_to @item, notice: "Item created" }
-        format.json { render json: @item, :status => :unprocessable_entity }
+        format.json { render json: @item }
       end
     else
       respond_to do |format|
         format.html { render action: "new" }
-        format.json { render json: @item }
+        format.json { render json: @item, :status => :unprocessable_entity }
       end
 
     end
@@ -59,6 +59,24 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html
       format.json
+    end
+  end
+
+  def comment
+    @item = Item.find(params[:id])
+    @comment = @item.comments.build(params[:comment])
+    @comment.user = current_user
+
+    if @comment.save
+      respond_to do |format|
+        format.html { redirect_to @item, notice: "Comment posted" }
+        format.json { render json: @item }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @item, notice: "Comment failed", :status => :unprocessable_entity }
+        format.json { render json: @item, :status => :unprocessable_entity }
+      end
     end
   end
 
