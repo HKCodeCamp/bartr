@@ -8,7 +8,7 @@ Hi <%= @nickname %>, <p/>
 <%  @user.items.each { |item| %>
 <%       if item.photos.length > 0  %>
             <div style="float:left; margin-left:10px; margin-bottom:10px">
-              <a href="<%= url_for( item_url(item)) %>"  >  <%= cl_image_tag(item.photos[0].path, { size: '75x75', crop: :fit }) %> </a>
+              <a href="<%= url_for( item_url(item)) %>"  >  <%= cl_image_tag(item.photos[0].path, { size: '75x75', crop: :fit , angle: :exif}) %> </a>
             </div>
 <%       end  %>
 <%  } %>

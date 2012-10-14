@@ -2,7 +2,7 @@
   <div class="thumbnail">
     <% if item.photos.length > 0 %>
         <a href="<%= url_for( item_url(item)) %>"  > 
-        <%= cl_image_tag(item.photos[0].path, { size: '125x125', crop: :fit }) %>
+        <%= cl_image_tag(item.photos[0].path, { size: '125x125', crop: :fit  , angle: :exif}) %>
         </a>
     <% end %>
   </div>
