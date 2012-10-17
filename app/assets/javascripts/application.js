@@ -22,5 +22,7 @@
 
 
 $(document).on('pageinit', function(){
-   $('.attachinary-input').attachinary();
+   $('.attachinary-input').attachinary({
+	template: "<ul>\n  <% for(var i=0; i<files.length; i++){ %>\n    <li>\n      <img\n        src=\"<%= $.cloudinary.url(files[i].public_id, { \"version\": files[i].version, \"angle\": 'exif', \"format\": 'jpg', \"crop\": 'fill', \"width\": 75, \"height\": 75 }) %>\"\n        alt=\"\" width=\"75\" height=\"75\" />\n      <a href=\"#\" data-remove=\"<%= files[i].public_id %>\">Remove</a>\n    </li>\n  <% } %>\n</ul>"
+	});
 }); 
