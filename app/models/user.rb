@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
   has_many :item_pms, :dependent => :destroy
 
   scope :active_sellers, scoped
+  
+  has_attachments :photos, maximum: 1
 
   def role?(role)
     return !!self.roles.find_by_name(role.to_s)

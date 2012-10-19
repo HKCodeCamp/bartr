@@ -39,7 +39,14 @@
     <% if @item.comments.any? %>
       <ul data-role="listview">
       <% @item.comments.reverse.each do |comment| %>
-        <li class="comment">
+        <li class="comment">  
+		  <p class="commentPhoto">
+		  <% if comment.user.photos.length > 0 %>
+			<%= cl_image_tag(comment.user.photos[0].path, { size: '40x40', crop: :thumb  , angle: :exif}) %>
+		  <% else %>
+			<img src="http://a2.res.cloudinary.com/hvwz5zxen/image/upload/a_exif,c_fit,h_75,w_75/v1350675944/qjdm0sfxcia7sc4jfwp6.png"/>
+		  <% end %>	
+		  </p>
           <p class="commentBy"><%= comment.user.name %></p>
           <p class="commentMsg"><%= comment.comment %></p>
         </li>

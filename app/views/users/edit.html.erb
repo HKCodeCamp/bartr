@@ -4,6 +4,11 @@
     <%= @user.email %>
   </div>
   <br/>
+  <div class="input photos optional">
+    <label class="input optional control-label ui-input-text" for="user_profile_pic">Profile Picture</label>
+    <%= f.attachinary_file_field :photos %>
+  </div>	 
+  <br/>
   <%= f.input :name  %>
   <br/>
   <%= f.input :desc, :as => :text ,:label => 'Bio'%>

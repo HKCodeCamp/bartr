@@ -1,5 +1,12 @@
 <div class="user">
-  <h1 class="name"><%=  @user.name %></h1>
+  <h1 class="name">
+	<% if @user.photos.length > 0 %>
+		<%= cl_image_tag(@user.photos[0].path, { size: '75x75', crop: :thumb  , angle: :exif}) %>
+	<% else %>
+		<img src="http://a2.res.cloudinary.com/hvwz5zxen/image/upload/a_exif,c_fit,h_75,w_75/v1350675944/qjdm0sfxcia7sc4jfwp6.png"/>
+	<% end %>
+	<%=  @user.name %>
+  </h1>
   <p class="description"><%=  @user.desc %></p>
   <p class="followers_count">Followers: <%= @user.followers_count %></p>
   <div class="userItems user-item-list">
