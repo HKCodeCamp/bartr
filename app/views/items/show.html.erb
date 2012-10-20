@@ -41,13 +41,15 @@
       <% @item.comments.reverse.each do |comment| %>
         <li class="comment">  
 		  <p class="commentPhoto">
-		  <% if comment.user.photos.length > 0 %>
-			<%= cl_image_tag(comment.user.photos[0].path, { size: '40x40', crop: :thumb  , angle: :exif}) %>
-		  <% else %>
-			<img src="http://www.igpsd.com/placeholder.png"/>
-		  <% end %>	
+				<a href="<%= url_for( user_url(comment.user)) %>"  > 
+		  		<% if comment.user.photos.length > 0 %>
+					<%= cl_image_tag(comment.user.photos[0].path, { size: '40x40', crop: :thumb  , angle: :exif}) %>
+				  <% else %>
+					<img src="http://www.igpsd.com/placeholder.png"/>
+				  <% end %>	
+				</a>
 		  </p>
-          <p class="commentBy"><%= comment.user.name %></p>
+          <p class="commentBy"><a href="<%= url_for( user_url(comment.user)) %>"  > <%= comment.user.name %> </a> </p>
           <p class="commentMsg"><%= comment.comment %></p>
         </li>
       <% end %>
@@ -69,9 +71,9 @@
        <a href="/users/sign_up" data-role="button">Sign Up</a>
     <% end %>
    </div>
-
 </div>
 
 <% content_for :top_left_nav do %>
+ 
  <a href="/" data-mini="true" data-icon="back" class="ui-btn-left" data-rel="back">Back</a>
 <% end %>

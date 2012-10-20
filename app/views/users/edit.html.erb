@@ -16,3 +16,7 @@
   <%= f.button :submit %>
   <% link_to "Cancel", user_path(@user) %>
 <% end %>
+
+<% content_for :top_left_nav do %>
+	<a href="#"  data-icon="back" class="ui-btn-left"  data-rel="back">Back</a>
+<% end %>
