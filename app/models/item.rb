@@ -6,6 +6,7 @@ class Item < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
 
   belongs_to :owner, :class_name => 'User'
+  belongs_to :buyer, :class_name => 'User', :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :interests, :dependent => :destroy
   has_many :bookmarks, :dependent => :destroy
@@ -13,7 +14,7 @@ class Item < ActiveRecord::Base
 
   validates :title, :length => { :minimum => 2, :maximum => 50 }
   validates :desc, :length => { :minimum => 5, :maximum => 3000 }
-  validates :price, :numericality => { :only_integer => true, :greater_than_or_equal_to => 0.0 }
+  validates :price, :numericality => { :greater_than_or_equal_to => 0.0 }
   validates :owner, :presence => true
 
   has_attachments :photos, maximum: 10

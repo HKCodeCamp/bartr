@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   has_many :followers, :foreign_key => "followed_by_id", :dependent => :destroy
   has_many :followed_bies, :through => :followings
   has_many :items, :foreign_key => 'owner_id'
+  has_many :buyed_items, :foreign_key => 'buyer_id', :class_name => "Item"
   has_many :comments, :dependent => :destroy
   has_many :interests, :dependent => :destroy
   has_many :bookmarks, :dependent => :destroy

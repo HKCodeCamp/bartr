@@ -7,6 +7,47 @@ $('[data-role="page"]').live 'pageshow', (e) ->
     else
       console.log("no user location")
     return true;
+    
+  $('.confirm_buyer').live 'click', (event) ->
+    $confirm_btn = $(this)
+    url = $(this).data('url')
+    
+    success = (data, textStatus, jqXHR) ->
+      $('#interest').addClass('hidden').removeClass('ui-disabled')
+      $('#uninterest').removeClass('hidden')
+
+    error = (jqXHR, textStatus, errorThrown) ->
+      $('#interest').removeClass('ui-disabled')
+
+    $.ajax
+      type: 'POST',
+      url: url,
+      success: success,
+      error: error,
+      dataType: 'json'
+  
+    return false
+    
+  $('.remove_confirm_buyer').live 'click', (event) ->
+    $confirm_btn = $(this)
+    url = $(this).data('url')
+
+    success = (data, textStatus, jqXHR) ->
+      $('#interest').addClass('hidden').removeClass('ui-disabled')
+      $('#uninterest').removeClass('hidden')
+
+    error = (jqXHR, textStatus, errorThrown) ->
+      $('#interest').removeClass('ui-disabled')
+
+    $.ajax
+      type: 'POST',
+      url: url,
+      success: success,
+      error: error,
+      dataType: 'json'
+
+    return false
+    
 
   $('#interest').click ->
     $(this).addClass('ui-disabled')

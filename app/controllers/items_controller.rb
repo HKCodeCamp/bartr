@@ -149,6 +149,24 @@ class ItemsController < ApplicationController
       end
     end
   end
+  
+  def confirmed_in
+    @confirmed_user = User.find(params[:user_id])
+    @confirmed_item = Item.find(params[:item_id])
+    @confirmed_item.buyer = @confirmed_user
+    
+    if @confirmed_item.save
+      respond_to do |format|
+        format.html { redirect_to @confirmed_item, notice: "Item submitted" }
+        format.json { render json: @confirmed_item }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @confirmed_item, notice: "Item NOT submitted, error : #{@confirmed_item.errors.full_messages}", :status => :unprocessable_entity }
+        format.json { render json: @confirmed_item.errors.full_messages, :status => :unprocessable_entity }
+      end
+    end
+  end
 
   def new_pm
     @item = Item.find(params[:id])

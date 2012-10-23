@@ -25,7 +25,16 @@
       <ul data-role="listview">
         <% @item.interests.each do |interest| %>
             <li class="interest">
-              <p class="interestBy"><%= interest.user.name %></p>
+              <p class="interestBy">
+              <% if interest.user.photos.length > 0 %>
+    					<%= cl_image_tag(interest.user.photos[0].path, { size: '40x40', crop: :thumb  , angle: :exif}) %>
+    				  <% else %>
+    					<img src="http://www.igpsd.com/placeholder.png"/>
+    				  <% end %>
+    				  <%= interest.user.name %>
+    				  <% if is_owner?(@item) %>
+              <a href="#" data-url="<%= user_item_confirmed_in_url(interest.user,@item) %>" data-role="button" data-mini="true" data-theme="b" data-inline="true" class="confirm_buyer">Confirm</a></p>
+              <% end %>
             </li>
         <% end %>
       </ul>

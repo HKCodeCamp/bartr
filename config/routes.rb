@@ -13,6 +13,10 @@ Bartr::Application.routes.draw do
 
   resources :users do
     post :follow, :un_follow, on: :member
+    
+    resources :items do
+      post :confirmed_in, :un_confirmed_in
+    end
   end
   
   # The priority is based upon order of creation:
