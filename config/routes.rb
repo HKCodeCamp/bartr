@@ -3,7 +3,7 @@ Bartr::Application.routes.draw do
 
   get "service/phone"
   
-  get "service/respond_twiml"
+  post "service/respond_twiml"
 
   get "sms/index"
 
