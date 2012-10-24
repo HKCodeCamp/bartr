@@ -1,4 +1,8 @@
 Bartr::Application.routes.draw do
+  get "service/sms"
+
+  get "service/phone"
+
   get "sms/index"
 
   post "sms/send_link"
