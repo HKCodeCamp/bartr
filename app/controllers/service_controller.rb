@@ -4,6 +4,17 @@ class ServiceController < ApplicationController
   end
 
   def phone
+    Delayed::Job.enqueue PhoneJob.new('13155674679', "#{params[:mobile]}", "#{params[:url]}" )
+  end
+  
+  def respond_twiml
+    response = Twilio::TwiML::Response.new do |r|
+      # r.Say 'hello there', :voice => 'woman'
+      r.Play "https://api.twilio.com/cowbell.mp3"
+    end
+
+    # print the result
+    render :xml => response.text
   end
   
   
@@ -17,6 +28,19 @@ class ServiceController < ApplicationController
         :from => "+#{from}",
         :to =>   "+#{to}",
         :body => "#{message}"
+      )
+    end
+  end
+  
+  class PhoneJob < Struct.new(:from, :to, :url)
+    def perform
+      key     = Settings.twilio.key
+      token   = Settings.twilio.token
+      
+      Twilio::REST::Client.new( key, token).account.calls.create(
+        :from => "+#{from}",
+        :to =>   "+#{to}",
+        :url => "#{url}"
       )
     end
   end

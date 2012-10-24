@@ -2,6 +2,8 @@ Bartr::Application.routes.draw do
   get "service/sms"
 
   get "service/phone"
+  
+  get "service/respond_twiml"
 
   get "sms/index"
 
