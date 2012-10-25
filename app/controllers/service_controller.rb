@@ -10,7 +10,7 @@ class ServiceController < ApplicationController
   def respond_twiml
     response = Twilio::TwiML::Response.new do |r|
       # r.Say 'hello there', :voice => 'woman'
-      r.Play "https://api.twilio.com/cowbell.mp3"
+      r.Play "http://www.igpsd.com/ecq/20121025114849-226032344.mp3"
     end
 
     # print the result
