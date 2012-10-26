@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :interests, :dependent => :destroy
   has_many :bookmarks, :dependent => :destroy
-  has_many :item_pms, :dependent => :destroy
+  has_many :item_pms, :dependent => :destroy, :foreign_key => 'sender_id'
 
   scope :active_sellers, scoped
   
