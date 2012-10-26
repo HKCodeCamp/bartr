@@ -1,5 +1,5 @@
 <% if is_owner?(item) %>
-  <a href="unsale" data-role="button" data-mini="true" data-inline="true">Remove</a>
+  <a href="<%= unsale_item_url(item) %>" data-role="button" data-mini="true" data-inline="true">Remove</a>
 
 <% else %>
   <a href="<%= new_pm_item_url(item) %>" data-role="button" data-rel="dialog" data-mini="true" data-inline="true">Email to Owner</a>
