@@ -1,4 +1,6 @@
 Bartr::Application.routes.draw do
+  resources :places
+
   get "service/sms"
 
   get "service/phone"

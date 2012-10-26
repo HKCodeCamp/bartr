@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121023082051) do
+ActiveRecord::Schema.define(:version => 20121026035405) do
 
   create_table "attachinary_files", :force => true do |t|
     t.integer  "attachinariable_id"
@@ -117,6 +117,16 @@ ActiveRecord::Schema.define(:version => 20121023082051) do
   end
 
   add_index "items", ["buyer_id"], :name => "index_items_on_buyer_id"
+
+  create_table "places", :force => true do |t|
+    t.string   "name"
+    t.float    "lat"
+    t.float    "lng"
+    t.text     "desc"
+    t.integer  "owner_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
