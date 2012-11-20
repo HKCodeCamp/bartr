@@ -17,7 +17,7 @@ $('[data-role="page"]').live 'pageshow', (e) ->
       $('#uninterest').removeClass('hidden')
 
     error = (jqXHR, textStatus, errorThrown) ->
-      $('#interest').removeClass('ui-disabled')
+      alert(JSON.parse(jqXHR.responseText)["error"]);
 
     $.ajax
       type: 'POST',
@@ -37,7 +37,7 @@ $('[data-role="page"]').live 'pageshow', (e) ->
       $('#uninterest').removeClass('hidden')
 
     error = (jqXHR, textStatus, errorThrown) ->
-      $('#interest').removeClass('ui-disabled')
+      alert(JSON.parse(jqXHR.responseText)["error"]);
 
     $.ajax
       type: 'POST',

@@ -6,11 +6,11 @@ class Item < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
 
   belongs_to :owner, :class_name => 'User'
-  belongs_to :buyer, :class_name => 'User', :dependent => :destroy
+  belongs_to :buyer, :class_name => 'User'
   has_many :comments, :dependent => :destroy
   has_many :interests, :dependent => :destroy
   has_many :bookmarks, :dependent => :destroy
-  has_many :item_pms
+  has_many :item_pms, :foreign_key => 'sender_id'
 
   validates :title, :length => { :minimum => 2, :maximum => 50 }
   validates :desc, :length => { :minimum => 5, :maximum => 3000 }

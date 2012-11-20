@@ -88,6 +88,16 @@ class ItemsController < ApplicationController
     end
   end
 
+  def unsale
+    @item = Item.find(params[:id])
+    @item.destroy
+
+    respond_to do |format|
+      format.html { redirect_to root_url , notice: "Item removed" }
+      format.json { redirect_to root_url , notice: "Item removed" }
+    end
+  end
+
   def interested_in
     @item = Item.find(params[:id])
     i = @item.interests.build(:user_id => current_user.id)
@@ -153,6 +163,15 @@ class ItemsController < ApplicationController
   def confirmed_in
     @confirmed_user = User.find(params[:user_id])
     @confirmed_item = Item.find(params[:item_id])
+
+    if @confirmed_item.buyer
+      respond_to do |format|
+        format.html { redirect_to @confirmed_item, notice: "Item NOT submitted, error : #{@confirmed_item.buyer.name} is already the buyer", :status => :unprocessable_entity }
+        format.json { render json: {:error => "Item NOT submitted, error : #{@confirmed_item.buyer.name} is already the buyer"}, :status => :unprocessable_entity }
+      end
+      return
+    end
+
     @confirmed_item.buyer = @confirmed_user
     
     if @confirmed_item.save

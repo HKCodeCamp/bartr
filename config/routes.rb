@@ -1,4 +1,6 @@
 Bartr::Application.routes.draw do
+  resources :places
+
   get "service/sms"
 
   get "service/phone"
@@ -42,6 +44,7 @@ Bartr::Application.routes.draw do
     end
     member do
       get :new_pm
+      get :unsale
       post :comment
       post :send_pm
       post :interested_in, :not_interested_in

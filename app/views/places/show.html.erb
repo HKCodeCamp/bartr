@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @place.name %>
+</p>
+
+<p>
+  <b>Lat:</b>
+  <%= @place.lat %>
+</p>
+
+<p>
+  <b>Lng:</b>
+  <%= @place.lng %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @place.desc %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%= @place.owner_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_place_path(@place) %> |
+<%= link_to 'Back', places_path %>
