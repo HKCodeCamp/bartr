@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     return true
   end
 
+  def demo
+    render :text => "abcd"
+  end
+
   # return basic errors for rails model
   def errors_for(object, message=nil)
     html = ""
