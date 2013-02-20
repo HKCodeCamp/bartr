@@ -8,6 +8,8 @@ class ServiceController < ApplicationController
   end
   
   def respond_twiml
+    store_id = "#{params[:url]}"
+    render :xml => "store_id = #{store_id}"
     response = Twilio::TwiML::Response.new do |r|
       # r.Say 'hello there', :voice => 'woman'
       r.Play "http://www.igpsd.com/ecq/20121025114849-226032344.mp3"
