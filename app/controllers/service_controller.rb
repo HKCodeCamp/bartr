@@ -8,7 +8,7 @@ class ServiceController < ApplicationController
   end
   
   def respond_twiml
-    store_id = "#{params[:url]}"
+    store_id = "#{params[:store_id]}"
     response = Twilio::TwiML::Response.new do |r|
       if (store_id == "31")
         r.Play "http://www.ecqapp.com/upload_file/voiceover/fb_voiceover.mp3"
