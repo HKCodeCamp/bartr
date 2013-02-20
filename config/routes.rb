@@ -7,6 +7,8 @@ Bartr::Application.routes.draw do
   
   post "service/respond_twiml"
 
+  post "service/respond_twiml_2"
+
   get "sms/index"
 
   post "sms/send_link"
