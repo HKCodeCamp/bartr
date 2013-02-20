@@ -9,10 +9,12 @@ class ServiceController < ApplicationController
   
   def respond_twiml
     store_id = "#{params[:url]}"
-    render :xml => "store_id = #{store_id}"
     response = Twilio::TwiML::Response.new do |r|
-      # r.Say 'hello there', :voice => 'woman'
-      r.Play "http://www.igpsd.com/ecq/20121025114849-226032344.mp3"
+      if (store_id == "31")
+        r.Play "http://www.ecqapp.com/upload_file/voiceover/fb_voiceover.mp3"
+      else
+        r.Play "http://www.igpsd.com/ecq/20121025114849-226032344.mp3"
+      end
     end
 
     # print the result
