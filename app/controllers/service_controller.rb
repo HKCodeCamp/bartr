@@ -9,7 +9,7 @@ class ServiceController < ApplicationController
   
   def respond_twiml
     store_id = "#{params[:store_id]}"
-    logger.debug "respond_twiml store_id = #{store_id}"
+    Logger.debug "respond_twiml store_id = #{store_id}"
     response = Twilio::TwiML::Response.new do |r|
       if (store_id == "31")
         # r.Play "http://www.ecqapp.com/upload_file/voiceover/fb_voiceover.mp3"
@@ -55,7 +55,7 @@ class ServiceController < ApplicationController
       key     = Settings.twilio.key
       token   = Settings.twilio.token
       
-      logger.debug "phone job url = #{url}?store_id=#{store_id}"
+      Logger.debug "phone job url = #{url}?store_id=#{store_id}"
 
       Twilio::REST::Client.new( key, token).account.calls.create(
         :from => "+#{from}",
