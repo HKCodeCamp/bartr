@@ -1,6 +1,11 @@
 class ServiceController < ApplicationController
   def sms
     Delayed::Job.enqueue SMSJob.new('13155674679', "#{params[:mobile]}", "#{params[:message]}" )
+
+    respond_to do |format|
+      format.html # 
+      format.json { render json: { :request => "Request" } }
+    end
   end
 
   def phone
